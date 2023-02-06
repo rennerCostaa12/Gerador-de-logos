@@ -1,0 +1,49 @@
+{
+    "logosAvaliable": [
+        {
+            "id": 1,
+            "model": "model1",
+            "icon": {
+                "url_icon": "https://cdn-icons-png.flaticon.com/512/0/826.png"
+            },
+            "text": {
+                "name": "Coisado",
+                "slogan": "O melhor que tem no mercado",
+                "font_size_name": "50px",
+                "font_size_slogan": "30px",
+                "font_weight_name": "bold",
+                "font_weight_slogan": "normal"
+            }
+        },
+        {
+            "id": 2,
+            "model": "model2",
+            "icon": {
+                "url_icon": "https://1001freedownloads.s3.amazonaws.com/vector/thumb/102734/car_icon.png"
+            },
+            "text": {
+                "name": "Coisado2",
+                "slogan": "O melhor que tem no mercado3",
+                "font_size_name": "50px",
+                "font_size_slogan": "30px",
+                "font_weight_name": "bold",
+                "font_weight_slogan": "normal"
+            }
+        },
+        {
+            "id": 3,
+            "model": "model3",
+            "icon": {
+                "url_icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDv3_HHWnCiECasIoGdRzLpUVFDNo6Z1TpOLJLMuh4r3_HQ0RqEBhEIQ_YrJq-105QI2Q&usqp=CAU"
+            },
+            "text": {
+                "name": "Coisado3",
+                "slogan": "O melhor que tem no mercado3",
+                "font_size_name": "50px",
+                "font_size_slogan": "30px",
+                "font_weight_name": "bold",
+                "font_weight_slogan": "normal"
+            }
+        }
+    ]
+}
