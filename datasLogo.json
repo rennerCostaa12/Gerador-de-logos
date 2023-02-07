@@ -8,7 +8,7 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_name": "Arial",
+                "type_font_name": "Courier New",
                 "type_font_slogan": "Arial",
                 "type_font_style_name": "normal",
                 "type_font_style_slogan": "oblique"
@@ -68,7 +68,7 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_name": "Courier",
+                "type_font_name": "Verdana",
                 "type_font_slogan": "Times New Roman",
                 "type_font_style_name": "oblique",
                 "type_font_style_slogan": "italic"
@@ -83,7 +83,7 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_name": "Arial",
+                "type_font_name": "sans-serif",
                 "type_font_slogan": "Times New Roman",
                 "type_font_style_name": "normal",
                 "type_font_style_slogan": "oblique"
@@ -98,7 +98,7 @@
                 "model": "3d"
             },
             "text": {
-                "type_font_name": "Times New Roman",
+                "type_font_name": "sans-serif",
                 "type_font_slogan": "Arial",
                 "type_font_style_name": "normal",
                 "type_font_style_slogan": "italic"

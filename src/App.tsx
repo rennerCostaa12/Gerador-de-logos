@@ -3,8 +3,6 @@ import Canvas from "./Components/Canvas";
 import axios from "axios";
 import { ContentLogos, ContentInputs, ContentSelectTypeImages, ContentButtonGenerateLogo } from './styles';
 
-import { GlobalStyle } from "./GlobalStyles";
-
 interface DatasLogoProps {
   id: number;
   icon: {
@@ -54,7 +52,6 @@ function App() {
 
   return (
     <div className="App">
-      <GlobalStyle />
       <div className="content-logos">
         <ContentInputs>
           <input type="text" ref={refNameLogo} placeholder="Nome da logo" />
