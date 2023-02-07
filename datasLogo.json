@@ -2,48 +2,108 @@
     "logosAvaliable": [
         {
             "id": 1,
-            "model": "model1",
             "icon": {
-                "url_icon": "https://cdn-icons-png.flaticon.com/512/0/826.png"
+                "url_icon": "https://images.vexels.com/media/users/3/256796/isolated/lists/e9f249577a6c890ad2ecd04d6707b4f1-car-icon-stroke.png",
+                "colors_icon": ["#29505C"],
+                "model": "2d"
             },
             "text": {
-                "name": "Coisado",
-                "slogan": "O melhor que tem no mercado",
-                "font_size_name": "50px",
-                "font_size_slogan": "30px",
-                "font_weight_name": "bold",
-                "font_weight_slogan": "normal"
-            }
+                "type_font_name": "Arial",
+                "type_font_slogan": "Arial",
+                "type_font_style_name": "normal",
+                "type_font_style_slogan": "oblique"
+            },
+            "model": "type1"
         },
         {
             "id": 2,
-            "model": "model2",
             "icon": {
-                "url_icon": "https://1001freedownloads.s3.amazonaws.com/vector/thumb/102734/car_icon.png"
+                "url_icon": "https://www.shareicon.net/data/256x256/2016/01/01/696430_car_512x512.png",
+                "colors_icon": ["#000000"],
+                "model": "2d"
             },
             "text": {
-                "name": "Coisado2",
-                "slogan": "O melhor que tem no mercado3",
-                "font_size_name": "50px",
-                "font_size_slogan": "30px",
-                "font_weight_name": "bold",
-                "font_weight_slogan": "normal"
-            }
+                "type_font_name": "Arial",
+                "type_font_slogan": "Times New Roman",
+                "type_font_style_name": "italic",
+                "type_font_style_slogan": "italic"
+            },
+            "model": "type2"
         },
         {
             "id": 3,
-            "model": "model3",
             "icon": {
-                "url_icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDv3_HHWnCiECasIoGdRzLpUVFDNo6Z1TpOLJLMuh4r3_HQ0RqEBhEIQ_YrJq-105QI2Q&usqp=CAU"
+                "url_icon": "https://www.shareicon.net/data/256x256/2016/01/01/696430_car_512x512.png",
+                "colors_icon": ["#000000"],
+                "model": "2d"
             },
             "text": {
-                "name": "Coisado3",
-                "slogan": "O melhor que tem no mercado3",
-                "font_size_name": "50px",
-                "font_size_slogan": "30px",
-                "font_weight_name": "bold",
-                "font_weight_slogan": "normal"
-            }
+                "type_font_name": "Courier New",
+                "type_font_slogan": "Verdana",
+                "type_font_style_name": "normal",
+                "type_font_style_slogan": "italic"
+            },
+            "model": "type2"
+        },
+        {
+            "id": 4,
+            "icon": {
+                "url_icon": "https://iconarchive.com/download/i99141/icons-land/transporter/Taxi-Front-Yellow.ico",
+                "colors_icon": ["#000000"], 
+                "model": "2d"
+            },
+            "text": {
+                "type_font_name": "Arial",
+                "type_font_slogan": "Times New Roman",
+                "type_font_style_name": "normal",
+                "type_font_style_slogan": "italic"
+            },
+            "model": "type2"
+        },
+        {
+            "id": 5,
+            "icon": {
+                "url_icon": "https://iconarchive.com/download/i99141/icons-land/transporter/Taxi-Front-Yellow.ico",
+                "colors_icon": ["#000000"], 
+                "model": "2d"
+            },
+            "text": {
+                "type_font_name": "Courier",
+                "type_font_slogan": "Times New Roman",
+                "type_font_style_name": "oblique",
+                "type_font_style_slogan": "italic"
+            },
+            "model": "type3"
+        },
+        {
+            "id": 6,
+            "icon": {
+                "url_icon": "https://gigantesprotecao.com.br/wp-content/uploads/2022/10/sportive-car.png",
+                "colors_icon": ["#B53636"],
+                "model": "2d"
+            },
+            "text": {
+                "type_font_name": "Arial",
+                "type_font_slogan": "Times New Roman",
+                "type_font_style_name": "normal",
+                "type_font_style_slogan": "oblique"
+            },
+            "model": "type1"
+        },
+        {
+            "id": 7,
+            "icon": {
+                "url_icon": "https://images.vexels.com/media/users/3/224281/isolated/lists/e11403c9c3fc0bfaef740517ce2e9470-vintage-sports-car-logo.png",
+                "colors_icon": ["#B53636"],
+                "model": "3d"
+            },
+            "text": {
+                "type_font_name": "Times New Roman",
+                "type_font_slogan": "Arial",
+                "type_font_style_name": "normal",
+                "type_font_style_slogan": "italic"
+            },
+            "model": "type2"
         }
     ]
 }

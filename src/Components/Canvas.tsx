@@ -1,14 +1,25 @@
 import { useEffect, useRef } from "react";
+import { Container } from "./styles";
 
 interface CanvasProps{
     urlImage: string;
     typeLogo: 'type1' | 'type2' | 'type3';
     nameLogo: string;
-    nameSlogan: string;
+    nameSlogan: string | undefined;
+    typeFontName: string;
+    typeFontSlogan: string;
+    styleFontName: 'normal' | 'oblique' | 'italic';
+    styleFontSlogan: 'normal' | 'oblique' | 'italic';
 }
 
-const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan }: CanvasProps) => {
-    const refCanvas = useRef< HTMLCanvasElement | null>(null);
+const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan, typeFontName, typeFontSlogan, styleFontName , styleFontSlogan}: CanvasProps) => {
+    const refCanvas = useRef<HTMLCanvasElement | null>(null);
+
+    const handleDownloadImage = (event: any) => {
+        const link = event.currentTarget;
+        link.download = 'image.png';
+        link.href = refCanvas.current?.toDataURL();
+    }
 
     useEffect(() => {
         const canvas = refCanvas.current;
@@ -19,11 +30,12 @@ const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan }: CanvasProps) => {
         
         const context = canvas.getContext('2d');
 
-        const teste: any = new Image();
+        const image: any = new Image();
+        image.crossOrigin = 'Anonymous';
 
         if(!context){
             return;
-        }
+        } 
 
         const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', font: string, size: number, coordinatesX: number, coordinatesY: number) => {
             context.textAlign = 'center';
@@ -36,40 +48,68 @@ const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan }: CanvasProps) => {
             }
         }
 
+        const drawTextSlogan = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', font: string, size: number, coordinatesX: number, coordinatesY: number) => {
+            context.textAlign = 'center';
+            context.font = `${fontStyle} ${size}px ${font}`;
+
+            if(type === 'stroke'){
+                context.strokeText(name, coordinatesX, coordinatesY);
+            }else{
+                context.fillText(name, coordinatesX, coordinatesY);
+            }
+        }
+
         if(typeLogo === 'type1'){
-            teste.src = urlImage;
-            teste.onload = () => {
-                context.drawImage(teste, 10, -40);
+            image.src = urlImage;
+            image.onload = () => {
+                context.drawImage(image, image.width/6.5, -20, 200, 200);
             }
     
-            drawText(nameLogo, 'fill', 'normal', 'Open Sans', 30, 135, 160);
-            drawText(nameSlogan, 'fill', 'italic', 'Comic Sans MS', 18, 135, 200);
+            drawText(nameLogo, 'fill', styleFontName, typeFontName, 30, 140, 160);
+            if(nameSlogan){
+                drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 135, 190);
+            }
         }
         
         if(typeLogo === 'type2'){
-            teste.src = urlImage;
-            teste.onload = () => {
-                context.drawImage(teste, 10, 0);
+            image.src = urlImage;
+            image.onload = () => {
+                context.drawImage(image, image.width/8, image.width/9, 200, 200);
             }
     
-            drawText(nameLogo,'fill', 'normal', 'Arial', 30, 135, 40);
-            drawText(nameSlogan, 'fill', 'normal','Comic Sans MS', 18, 135, 222);
+            drawText(nameLogo,'fill', styleFontName, typeFontName, 30, 130, 70);
+            if(nameSlogan){
+                drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 130, 210);
+            }
         }
 
 
         if(typeLogo === 'type3'){
-            teste.src = urlImage;
-            teste.onload = () => {
-                context.drawImage(teste, 10, 30);
+            image.src = urlImage;
+            image.onload = () => {
+                context.drawImage(image, image.width/6.5, 45, 200, 200);
             }
     
-            drawText(nameLogo, 'fill', 'normal' ,'Arial', 30, 135, 70);
-            drawText(nameSlogan, 'fill', 'oblique' ,'Comic Sans MS', 18, 135, 100)        
+            drawText(nameLogo, 'fill', styleFontName, typeFontName, 30, 135, 70);
+            if(nameSlogan){
+                drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 135, 100);
+            }
         }
 
     }, []);
 
-    return <canvas width={280} height={250} style={{ border: '1px solid #000000' }} ref={refCanvas} />
+    return(
+        <Container>
+            <canvas 
+                width={280} 
+                height={250} 
+                style={{ border: '4px solid #000000' }} 
+                ref={refCanvas}
+            />
+
+            <a className="btn-download" onClick={handleDownloadImage}> Download Image</a>
+        </Container>
+    )
 }
 
 export default Canvas;
