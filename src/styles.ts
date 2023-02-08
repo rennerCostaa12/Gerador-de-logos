@@ -36,6 +36,33 @@ export const ContentSelectTypeImages = styled.div`
     }
 `
 
+export const ContentSelectTypeFonts = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+
+    > button {
+        cursor: pointer;
+        background: none;
+        font-size: 20px;
+        text-align: center;
+        width: 250px;
+        border-radius: 5px;
+        padding: 1.5rem 0;
+        border: 1px solid #000000;
+        -webkit-box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+        box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+
+        &:hover {
+            transition: all ease 0.3s;
+            border: 1px solid red;
+        }
+    }
+`
+
 export const ContentButtonGenerateLogo = styled.div`
     width: 100%;
     display: flex;

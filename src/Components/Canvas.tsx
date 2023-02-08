@@ -10,11 +10,11 @@ interface CanvasProps{
     typeFontSlogan: string;
     styleFontName: 'normal' | 'oblique' | 'italic';
     styleFontSlogan: 'normal' | 'oblique' | 'italic';
+    linkFontName: string;
+    nameFontLink: string;
 }
 
-const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan, typeFontName, typeFontSlogan, styleFontName , styleFontSlogan}: CanvasProps) => {
-
-    console.log(typeFontName)
+const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontName, typeFontSlogan, styleFontName, styleFontSlogan, linkFontName, nameFontLink}: CanvasProps) => {
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -26,17 +26,19 @@ const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan, typeFontName, typeF
     
     useEffect(() => {
 
-        let f = new FontFace('test', "url(http://www.miketaylr.com/f/kulminoituva.ttf)");   
+        const font = new FontFace(nameFontLink, `url(${linkFontName})`, {
+            style: 'normal',
+            weight: '400',
+        });   
 
-        f.load().then((font) => {
-            console.log(font);
+        font.load().then((font) => {
+
+            document.fonts.add(font);
             const canvas = refCanvas.current;
     
             if(!canvas){
                 return;
             }
-
-            document.fonts.add(font);  
 
             const context = canvas.getContext('2d');
     
@@ -49,7 +51,7 @@ const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan, typeFontName, typeF
     
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', font: string, size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
-                context.font = `${fontStyle} ${size}px test`;
+                context.font = `${fontStyle} ${size}px ${nameFontLink}`;
     
                 if(type === 'stroke'){
                     context.strokeText(name, coordinatesX, coordinatesY);
@@ -102,6 +104,9 @@ const Canvas = ({ urlImage,  typeLogo, nameLogo, nameSlogan, typeFontName, typeF
                     }
                 }
             }
+        })
+        .catch((error) => {
+            console.log(error);
         })
     }, []);
 

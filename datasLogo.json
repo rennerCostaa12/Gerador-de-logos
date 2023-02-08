@@ -11,7 +11,9 @@
                 "type_font_name": "Courier New",
                 "type_font_slogan": "Arial",
                 "type_font_style_name": "normal",
-                "type_font_style_slogan": "oblique"
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/oswald/v49/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2",
+                "name_link_font": "Oswald"
             },
             "model": "type1"
         },
@@ -26,7 +28,9 @@
                 "type_font_name": "Arial",
                 "type_font_slogan": "Times New Roman",
                 "type_font_style_name": "italic",
-                "type_font_style_slogan": "italic"
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/lobster/v28/neILzCirqoswsqX9zoKmMw.woff2",
+                "name_link_font": "Lobster"
             },
             "model": "type2"
         },
@@ -41,7 +45,9 @@
                 "type_font_name": "Courier New",
                 "type_font_slogan": "Verdana",
                 "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic"
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQyn2Q.woff2",
+                "name_link_font": "Niconne"
             },
             "model": "type2"
         },
@@ -56,7 +62,9 @@
                 "type_font_name": "Arial",
                 "type_font_slogan": "Times New Roman",
                 "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic"
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/itim/v10/0nknC9ziJOYe8ANAkA.woff2",
+                "name_link_font": "Itim"
             },
             "model": "type2"
         },
@@ -70,8 +78,10 @@
             "text": {
                 "type_font_name": "Verdana",
                 "type_font_slogan": "Times New Roman",
-                "type_font_style_name": "oblique",
-                "type_font_style_slogan": "italic"
+                "type_font_style_name": "normal",
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
+                "name_link_font": "Montserrat"
             },
             "model": "type3"
         },
@@ -86,7 +96,9 @@
                 "type_font_name": "sans-serif",
                 "type_font_slogan": "Times New Roman",
                 "type_font_style_name": "normal",
-                "type_font_style_slogan": "oblique"
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/neucha/v17/q5uGsou0JOdh94bfvQlt.woff2",
+                "name_link_font": "Neucha"
             },
             "model": "type1"
         },
@@ -101,7 +113,9 @@
                 "type_font_name": "sans-serif",
                 "type_font_slogan": "Arial",
                 "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic"
+                "type_font_style_slogan": "italic",
+                "link_font_name": "https://fonts.gstatic.com/s/neucha/v17/q5uGsou0JOdh94bfvQlt.woff2",
+                "name_link_font": "Neucha"
             },
             "model": "type2"
         }

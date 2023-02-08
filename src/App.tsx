@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Canvas from "./Components/Canvas";
 import axios from "axios";
-import { ContentLogos, ContentInputs, ContentSelectTypeImages, ContentButtonGenerateLogo } from './styles';
+import { ContentLogos, ContentInputs, ContentSelectTypeImages, ContentButtonGenerateLogo, ContentSelectTypeFonts } from './styles';
 
 interface DatasLogoProps {
   id: number;
@@ -16,12 +16,15 @@ interface DatasLogoProps {
     type_font_slogan: string;
     type_font_style_name: 'normal' | 'oblique' | 'italic';
     type_font_style_slogan: 'normal' | 'oblique' | 'italic';
+    link_font_name: string;
+    name_link_font: string;
   };
 }
 
 function App() {
 
   const [datasLogo, setDatasLogo] = useState<DatasLogoProps[] | null>(null);
+  const [listFonts, setListFonts] = useState<string[]>([]);
   
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
@@ -50,6 +53,8 @@ function App() {
     })
   }, []);
 
+  console.log(listFonts);
+
   return (
     <div className="App">
       <div className="content-logos">
@@ -67,7 +72,52 @@ function App() {
           </div>
         </ContentSelectTypeImages>
 
-        {typeLogo !== undefined &&
+        <ContentSelectTypeFonts>
+          <button
+            style={{ border: listFonts.includes('Montserrat') ? '1px solid blue' : '', fontFamily: 'Montserrat' }}
+            disabled={listFonts.length >= 3 && !listFonts.includes('Montserrat')}
+            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Montserrat'])}
+          >
+            <h1>Montserrat</h1>
+          </button>
+          <button
+            style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
+            disabled={listFonts.length >= 3 && !listFonts.includes('Neucha')}
+            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Neucha'])}
+          >
+            <h1>Neucha</h1>
+          </button>
+          <button
+            style={{ border: listFonts.includes('Niconne') ? '1px solid blue' : '', fontFamily: 'Niconne' }}
+            disabled={listFonts.length >= 3 && !listFonts.includes('Niconne')}
+            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Niconne'])}
+          >
+            <h1>Niconne</h1>
+          </button>
+          <button
+            style={{ border: listFonts.includes('Lobster') ? '1px solid blue' : '', fontFamily: 'Lobster' }}
+            disabled={listFonts.length >= 3 && !listFonts.includes('Lobster')}
+            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Lobster'])}
+          >
+            <h1>Lobster</h1>
+          </button>
+          <button
+            style={{ border: listFonts.includes('Oswald') ? '1px solid blue' : '', fontFamily: 'Oswald' }}
+            disabled={listFonts.length >= 3 && !listFonts.includes('Oswald')}
+            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Oswald'])}
+          >
+            <h1>Oswald</h1>
+          </button>
+          <button
+            style={{ border: listFonts.includes('Itim') ? '1px solid blue' : '', fontFamily: 'Itim' }}
+            disabled={listFonts.length >= 3 && !listFonts.includes('Itim')}
+            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Itim'])}
+          >
+            <h1>Itim</h1>
+          </button>
+        </ContentSelectTypeFonts>
+
+        {typeLogo !== undefined && listFonts.length >= 3 &&
           <ContentButtonGenerateLogo>
             <button onClick={handleGenerateLogo}>Gerar</button>
           </ContentButtonGenerateLogo>
@@ -87,6 +137,8 @@ function App() {
                     nameLogo={nameLogo} 
                     nameSlogan={nameSlogan} 
                     typeLogo={value.model} 
+                    linkFontName={value.text.link_font_name}
+                    nameFontLink={value.text.name_link_font}
                     urlImage={value.icon.url_icon}
                   />
                 </React.Fragment>
