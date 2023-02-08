@@ -6,7 +6,6 @@ interface CanvasProps{
     typeLogo: 'type1' | 'type2' | 'type3';
     nameLogo: string;
     nameSlogan: string | undefined;
-    typeFontName: string;
     typeFontSlogan: string;
     styleFontName: 'normal' | 'oblique' | 'italic';
     styleFontSlogan: 'normal' | 'oblique' | 'italic';
@@ -14,7 +13,7 @@ interface CanvasProps{
     nameFontLink: string;
 }
 
-const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontName, typeFontSlogan, styleFontName, styleFontSlogan, linkFontName, nameFontLink}: CanvasProps) => {
+const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styleFontName, styleFontSlogan, linkFontName, nameFontLink}: CanvasProps) => {
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -49,7 +48,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontName, typeFo
                 return;
             } 
     
-            const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', font: string, size: number, coordinatesX: number, coordinatesY: number) => {
+            const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
                 context.font = `${fontStyle} ${size}px ${nameFontLink}`;
     
@@ -75,7 +74,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontName, typeFo
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width/6.5, -20, 200, 200);
-                    drawText(nameLogo, 'fill', styleFontName, typeFontName, 30, 140, 160);
+                    drawText(nameLogo, 'fill', styleFontName, 30, 140, 160);
                     if(nameSlogan){
                         drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 135, 190);
                     }
@@ -86,7 +85,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontName, typeFo
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width/8, image.width/9, 200, 200);
-                    drawText(nameLogo,'fill', styleFontName, typeFontName, 30, 130, 70);
+                    drawText(nameLogo,'fill', styleFontName, 30, 130, 70);
                     if(nameSlogan){
                         drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 130, 210);
                     }
@@ -98,7 +97,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontName, typeFo
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width/6.5, 45, 200, 200);
-                    drawText(nameLogo, 'fill', styleFontName, typeFontName, 30, 135, 70);
+                    drawText(nameLogo, 'fill', styleFontName, 30, 135, 70);
                     if(nameSlogan){
                         drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 135, 100);
                     }

@@ -12,7 +12,6 @@ interface DatasLogoProps {
   };
   model: 'type1' | 'type2' | 'type3';
   text: {
-    type_font_name: string;
     type_font_slogan: string;
     type_font_style_name: 'normal' | 'oblique' | 'italic';
     type_font_style_slogan: 'normal' | 'oblique' | 'italic';
@@ -53,7 +52,8 @@ function App() {
     })
   }, []);
 
-  console.log(listFonts);
+  const listFilteredTypeImage = datasLogo?.filter((data) => data.icon.model === typeLogo);
+  const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_link_font));
 
   return (
     <div className="App">
@@ -125,14 +125,12 @@ function App() {
 
         {nameLogo && nameSlogan &&
           <ContentLogos>
-            {datasLogo?.filter((data) => data.icon.model === typeLogo ).map((value, index) => {
-              console.log(value);
+            {listFilteredTypeFont?.map((value, index) => {
               return(
                 <React.Fragment key={index}>
                   <Canvas 
                     styleFontName={value.text.type_font_style_name}
                     styleFontSlogan={value.text.type_font_style_slogan}
-                    typeFontName={value.text.type_font_name}
                     typeFontSlogan={value.text.type_font_slogan}
                     nameLogo={nameLogo} 
                     nameSlogan={nameSlogan} 
