@@ -7,13 +7,14 @@ interface CanvasProps{
     nameLogo: string;
     nameSlogan: string | undefined;
     typeFontSlogan: string;
-    styleFontName: 'normal' | 'oblique' | 'italic';
-    styleFontSlogan: 'normal' | 'oblique' | 'italic';
     linkFontName: string;
     nameFontLink: string;
+    colorIcon: string[];
 }
 
-const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styleFontName, styleFontSlogan, linkFontName, nameFontLink}: CanvasProps) => {
+const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorIcon }: CanvasProps) => {
+
+    console.log(colorIcon);
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -47,9 +48,17 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styl
             if(!context){
                 return;
             } 
-    
+
+            context.rect(0, 0, 280, 250);
+            context.fillStyle = '#FFFFFF';
+            context.fill();
+
+            context.beginPath();
+
+            
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
+                context.fillStyle = colorIcon[0];
                 context.font = `${fontStyle} ${size}px ${nameFontLink}`;
     
                 if(type === 'stroke'){
@@ -61,6 +70,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styl
     
             const drawTextSlogan = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', font: string, size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
+                context.fillStyle = '#000000';
                 context.font = `${fontStyle} ${size}px ${font}`;
     
                 if(type === 'stroke'){
@@ -73,10 +83,11 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styl
             if(typeLogo === 'type1'){
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width/6.5, -20, 200, 200);
-                    drawText(nameLogo, 'fill', styleFontName, 30, 140, 160);
+                    context.drawImage(image, image.width/4, 15, 150, 150);
+                    context.beginPath();
+                    drawText(nameLogo, 'fill', 'normal', 40, 140, 160);
                     if(nameSlogan){
-                        drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 135, 190);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 138, 190);
                     }
                 }
             }
@@ -84,10 +95,10 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styl
             if(typeLogo === 'type2'){
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width/8, image.width/9, 200, 200);
-                    drawText(nameLogo,'fill', styleFontName, 30, 130, 70);
+                    context.drawImage(image, image.width/4, 40, 150, 150);
+                    drawText(nameLogo,'fill', 'normal', 40, 140, 70);
                     if(nameSlogan){
-                        drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 130, 210);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 138, 170);
                     }
                 }
             }
@@ -96,10 +107,10 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, styl
             if(typeLogo === 'type3'){
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width/6.5, 45, 200, 200);
-                    drawText(nameLogo, 'fill', styleFontName, 30, 135, 70);
+                    context.drawImage(image, image.width/4, 60, 150, 150);
+                    drawText(nameLogo, 'fill', 'normal', 50, 140, 70);
                     if(nameSlogan){
-                        drawTextSlogan(nameSlogan, 'fill', styleFontSlogan, typeFontSlogan, 18, 135, 100);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 138, 90);
                     }
                 }
             }

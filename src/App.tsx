@@ -13,10 +13,9 @@ interface DatasLogoProps {
   model: 'type1' | 'type2' | 'type3';
   text: {
     type_font_slogan: string;
-    type_font_style_name: 'normal' | 'oblique' | 'italic';
-    type_font_style_slogan: 'normal' | 'oblique' | 'italic';
     link_font_name: string;
     name_link_font: string;
+    slogan_type_font: string;
   };
 }
 
@@ -66,9 +65,11 @@ function App() {
         <ContentSelectTypeImages>
           <div className="content-images" style={{ border: typeLogo === '2d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('2d')}>
             <img src="https://cdn-icons-png.flaticon.com/512/5031/5031271.png" alt="2d" />
+            <span>Ícone 2D</span>
           </div>
           <div className="content-images" style={{ border: typeLogo === '3d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('3d')}>
             <img src="https://icon-library.com/images/3d-car-icon/3d-car-icon-6.jpg" alt="3d" />
+            <span>Ícone 3D</span>
           </div>
         </ContentSelectTypeImages>
 
@@ -129,9 +130,8 @@ function App() {
               return(
                 <React.Fragment key={index}>
                   <Canvas 
-                    styleFontName={value.text.type_font_style_name}
-                    styleFontSlogan={value.text.type_font_style_slogan}
-                    typeFontSlogan={value.text.type_font_slogan}
+                    colorIcon={value.icon.colors_icon}
+                    typeFontSlogan={value.text.slogan_type_font}
                     nameLogo={nameLogo} 
                     nameSlogan={nameSlogan} 
                     typeLogo={value.model} 

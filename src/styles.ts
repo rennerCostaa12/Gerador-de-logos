@@ -34,6 +34,13 @@ export const ContentSelectTypeImages = styled.div`
     .content-images img{
         width: 150px;
     }
+
+    .content-images span{
+        display: block;
+        font-size: 25px;
+        font-family: 'Lobster';
+        text-align: center;
+    }
 `
 
 export const ContentSelectTypeFonts = styled.div`

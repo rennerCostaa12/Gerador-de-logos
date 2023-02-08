@@ -8,10 +8,9 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/oswald/v49/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2",
-                "name_link_font": "Oswald"
+                "name_link_font": "Oswald",
+                "slogan_type_font": "Lobster"
             },
             "model": "type1"
         },
@@ -23,10 +22,9 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_style_name": "italic",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/lobster/v28/neILzCirqoswsqX9zoKmMw.woff2",
-                "name_link_font": "Lobster"
+                "name_link_font": "Lobster",
+                "slogan_type_font": "Montserrat"
             },
             "model": "type2"
         },
@@ -38,12 +36,11 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQyn2Q.woff2",
-                "name_link_font": "Niconne"
+                "name_link_font": "Niconne",
+                "slogan_type_font": "Neucha"
             },
-            "model": "type2"
+            "model": "type1"
         },
         {
             "id": 4,
@@ -53,10 +50,9 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/itim/v10/0nknC9ziJOYe8ANAkA.woff2",
-                "name_link_font": "Itim"
+                "name_link_font": "Itim",
+                "slogan_type_font": "Neucha"
             },
             "model": "type2"
         },
@@ -68,10 +64,9 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
-                "name_link_font": "Montserrat"
+                "name_link_font": "Montserrat",
+                "slogan_type_font": "Itim"
             },
             "model": "type3"
         },
@@ -83,12 +78,11 @@
                 "model": "2d"
             },
             "text": {
-                "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/neucha/v17/q5uGsou0JOdh94bfvQlt.woff2",
-                "name_link_font": "Neucha"
+                "name_link_font": "Neucha",
+                "slogan_type_font": "Neucha"
             },
-            "model": "type1"
+            "model": "type2"
         },
         {
             "id": 7,
@@ -98,10 +92,51 @@
                 "model": "3d"
             },
             "text": {
-                "type_font_style_name": "normal",
-                "type_font_style_slogan": "italic",
                 "link_font_name": "https://fonts.gstatic.com/s/neucha/v17/q5uGsou0JOdh94bfvQlt.woff2",
-                "name_link_font": "Neucha"
+                "name_link_font": "Neucha",
+                "slogan_type_font": "Niconne"
+            },
+            "model": "type2"
+        },
+        {
+            "id": 8,
+            "icon": {
+                "url_icon": "https://iconarchive.com/download/i99141/icons-land/transporter/Taxi-Front-Yellow.ico",
+                "colors_icon": ["#000000"], 
+                "model": "2d"
+            },
+            "text": {
+                "link_font_name": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
+                "name_link_font": "Niconne",
+                "slogan_type_font": "Itim"
+            },
+            "model": "type3"
+        },
+        {
+            "id": 9,
+            "icon": {
+                "url_icon": "https://cdn.webpushr.com/siteassets/EMWSNYBzo0.png",
+                "colors_icon": ["#253551"], 
+                "model": "3d"
+            },
+            "text": {
+                "link_font_name": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
+                "name_link_font": "Montserrat",
+                "slogan_type_font": "Itim"
+            },
+            "model": "type3"
+        },
+        {
+            "id": 10,
+            "icon": {
+                "url_icon": "https://cdn-icons-png.flaticon.com/256/5965/5965276.png",
+                "colors_icon": ["#FF0001"], 
+                "model": "3d"
+            },
+            "text": {
+                "link_font_name": "https://fonts.gstatic.com/s/oswald/v49/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2",
+                "name_link_font": "Oswald",
+                "slogan_type_font": "Itim"
             },
             "model": "type2"
         }
