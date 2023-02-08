@@ -106,7 +106,7 @@
                 "model": "2d"
             },
             "text": {
-                "link_font_name": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
+                "link_font_name": "https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQyn2Q.woff2",
                 "name_link_font": "Niconne",
                 "slogan_type_font": "Itim"
             },
@@ -140,5 +140,37 @@
             },
             "model": "type2"
         }
-    ]
+    ],
+    "fontStyles": [
+        {
+            "id": 1,
+            "link": "https://fonts.gstatic.com/s/oswald/v49/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2",
+            "name_fonte": "Oswald"
+        },
+        {
+            "id": 2,
+            "link": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
+            "name_fonte": "Montserrat"
+        },
+        {
+            "id": 3,
+            "link": "https://fonts.gstatic.com/s/neucha/v17/q5uGsou0JOdh94bfvQlt.woff2",
+            "name_fonte": "Neucha"
+        },{
+            "id": 4,
+            "link": "https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQyn2Q.woff2",
+            "name_fonte": "Niconne"
+        },
+        {
+            "id": 5,
+            "link": "https://fonts.gstatic.com/s/lobster/v28/neILzCirqoswsqX9zoKmMw.woff2",
+            "name_fonte": "Lobster"
+        },
+        {
+            "id": 6,
+            "link": "https://fonts.gstatic.com/s/itim/v10/0nknC9ziJOYe8ANAkA.woff2",
+            "name_fonte": "Itim"
+        }
+    ],
+    "listTypeDesign": ["type1", "type2", "type3"]
 }

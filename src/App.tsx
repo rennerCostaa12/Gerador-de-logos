@@ -31,7 +31,7 @@ function App() {
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
 
-  const handleGenerateLogo = () => {
+  const handleShowLogo = () => {
     const valueNameLogo = refNameLogo.current?.value;
     const valueNameSlogan = refNameSlogan.current?.value;
 
@@ -39,6 +39,10 @@ function App() {
         setNameLogo(valueNameLogo);
         setNameSlogan(valueNameSlogan);
     }
+  }
+
+  const handleGenerateLogo = () => {
+    console.log('GERAR LOGO');
   }
 
   useEffect(() => {
@@ -120,7 +124,7 @@ function App() {
 
         {typeLogo !== undefined && listFonts.length >= 3 &&
           <ContentButtonGenerateLogo>
-            <button onClick={handleGenerateLogo}>Gerar</button>
+            <button onClick={handleShowLogo}>Gerar</button>
           </ContentButtonGenerateLogo>
         }
 
