@@ -145,31 +145,31 @@
         {
             "id": 1,
             "link": "https://fonts.gstatic.com/s/oswald/v49/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2",
-            "name_fonte": "Oswald"
+            "name_font": "Oswald"
         },
         {
             "id": 2,
             "link": "https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2",
-            "name_fonte": "Montserrat"
+            "name_font": "Montserrat"
         },
         {
             "id": 3,
             "link": "https://fonts.gstatic.com/s/neucha/v17/q5uGsou0JOdh94bfvQlt.woff2",
-            "name_fonte": "Neucha"
+            "name_font": "Neucha"
         },{
             "id": 4,
             "link": "https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQyn2Q.woff2",
-            "name_fonte": "Niconne"
+            "name_font": "Niconne"
         },
         {
             "id": 5,
             "link": "https://fonts.gstatic.com/s/lobster/v28/neILzCirqoswsqX9zoKmMw.woff2",
-            "name_fonte": "Lobster"
+            "name_font": "Lobster"
         },
         { 
             "id": 6,
             "link": "https://fonts.gstatic.com/s/itim/v10/0nknC9ziJOYe8ANAkA.woff2",
-            "name_fonte": "Itim"
+            "name_font": "Itim"
         }
     ],
     "listTypeDesign": ["type1", "type2", "type3"],
@@ -216,5 +216,6 @@
             "type_icon": "3d",
             "colors_icon": ["#FF0001"]
         }
-    ]
+    ],
+    "fontStyleSlogan": ["Montserrat", "Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"]
 }

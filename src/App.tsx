@@ -27,8 +27,17 @@ interface ListIconsProps {
 }
 
 interface ListTypeFontsProps {
+  id: number;
   link: string;
-  nameFont: string;
+  name_font: string;
+}
+
+interface ListLogosGenerateProps {
+  id: number;
+  icon: ListIconsProps;
+  text: ListTypeFontsProps;
+  fontSlogan: string;
+  model: 'type1' | 'type2' | 'type3',
 }
 
 function App() {
@@ -39,6 +48,8 @@ function App() {
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
   const [typeLogo, setTypeLogo] = useState<'2d' | '3d' | undefined>(undefined);
+
+  const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
   
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
@@ -57,31 +68,38 @@ function App() {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  const handleChooseLogo = (list: ListIconsProps[]) => {
+  const handleChooseElement = (list: ListIconsProps[]) => {
     const randomIndex = handleRandomIndex(0, list.length - 1);
     return list[randomIndex];
   }
-
-  const handleChooseFont = (list: ListTypeFontsProps[]) => {
-    const randomIndex = handleRandomIndex(0, list.length - 1);
-    return list[randomIndex];
-  }
-
-  const handleChooseDesign = (list: string) => {
-    const randomIndex = handleRandomIndex(0, list.length - 1);
-    return list[randomIndex];
-  }
-
+ 
   const handleGenerateLogo = async () => {
     const responseListIcons = await axios.get('http://localhost:3000/listIcons');
     const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
     const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
+    const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan')
+
+    let listTeste = [];
+    
 
     try{
-      const logoChoosed = handleChooseLogo(responseListIcons.data);
-      const fontChoosed = handleChooseFont(responseListTypeFonts.data);
-      const designChoosed = handleChooseDesign(responseListDesign.data);
-      
+      for (let i = 1; i < 6; i++) {
+        const logoChoosed = handleChooseElement(responseListIcons.data);
+        const fontChoosed = handleChooseElement(responseListTypeFonts.data);
+        const designChoosed = handleChooseElement(responseListDesign.data);
+        const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
+
+        const modelJsonGenerate = {
+          id: i,
+          icon: logoChoosed,
+          text: fontChoosed,
+          fontSlogan: fontSloganChoosed,
+          model: designChoosed,
+        }
+        
+        listTeste.push(modelJsonGenerate);
+      }
+      setListLogosGenerated(listTeste as any);
     }catch(error){
       console.log(error);
     }
@@ -99,6 +117,8 @@ function App() {
 
   const listFilteredTypeImage = datasLogo?.filter((data) => data.icon.model === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_link_font));
+
+  console.log(listLogosGenerated);
 
   return (
     <div className="App">
