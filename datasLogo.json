@@ -166,11 +166,55 @@
             "link": "https://fonts.gstatic.com/s/lobster/v28/neILzCirqoswsqX9zoKmMw.woff2",
             "name_fonte": "Lobster"
         },
-        {
+        { 
             "id": 6,
             "link": "https://fonts.gstatic.com/s/itim/v10/0nknC9ziJOYe8ANAkA.woff2",
             "name_fonte": "Itim"
         }
     ],
-    "listTypeDesign": ["type1", "type2", "type3"]
+    "listTypeDesign": ["type1", "type2", "type3"],
+    "listIcons": [
+        {
+            "id": 1,
+            "url_icon": "https://images.vexels.com/media/users/3/256796/isolated/lists/e9f249577a6c890ad2ecd04d6707b4f1-car-icon-stroke.png",
+            "type_icon": "2d",
+            "colors_icon": "#29505C"
+        },
+        {
+            "id": 2,
+            "url_icon": "https://www.shareicon.net/data/256x256/2016/01/01/696430_car_512x512.png",
+            "type_icon": "2d",
+            "colors_icon": ["#000000"]
+        },
+        {
+            "id": 3,
+            "url_icon": "https://iconarchive.com/download/i99141/icons-land/transporter/Taxi-Front-Yellow.ico",
+            "type_icon": "2d",
+            "colors_icon": ["#FB9D09"]
+        },
+        {
+            "id": 4,
+            "url_icon": "https://gigantesprotecao.com.br/wp-content/uploads/2022/10/sportive-car.png",
+            "type_icon": "2d",
+            "colors_icon": ["#B53636"]
+        },
+        {
+            "id": 5,
+            "url_icon": "https://images.vexels.com/media/users/3/224281/isolated/lists/e11403c9c3fc0bfaef740517ce2e9470-vintage-sports-car-logo.png",
+            "type_icon": "3d",
+            "colors_icon": ["#4F74B1"]
+        },
+        {
+            "id": 6,
+            "url_icon": "https://cdn.webpushr.com/siteassets/EMWSNYBzo0.png",
+            "type_icon": "3d",
+            "colors_icon": ["#253551"]
+        },
+        {
+            "id": 7,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/5965/5965276.png",
+            "type_icon": "3d",
+            "colors_icon": ["#FF0001"]
+        }
+    ]
 }

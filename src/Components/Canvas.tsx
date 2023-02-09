@@ -54,7 +54,6 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             context.fill();
 
             context.beginPath();
-
             
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';

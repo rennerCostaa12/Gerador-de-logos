@@ -19,6 +19,18 @@ interface DatasLogoProps {
   };
 }
 
+interface ListIconsProps {
+  colors_icons: string;
+  id: number;
+  type_icon: '2d' | '3d',
+  url_icon: string;
+}
+
+interface ListTypeFontsProps {
+  link: string;
+  nameFont: string;
+}
+
 function App() {
 
   const [datasLogo, setDatasLogo] = useState<DatasLogoProps[] | null>(null);
@@ -27,7 +39,7 @@ function App() {
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
   const [typeLogo, setTypeLogo] = useState<'2d' | '3d' | undefined>(undefined);
-
+  
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
 
@@ -41,8 +53,38 @@ function App() {
     }
   }
 
-  const handleGenerateLogo = () => {
-    console.log('GERAR LOGO');
+  const handleRandomIndex = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  const handleChooseLogo = (list: ListIconsProps[]) => {
+    const randomIndex = handleRandomIndex(0, list.length - 1);
+    return list[randomIndex];
+  }
+
+  const handleChooseFont = (list: ListTypeFontsProps[]) => {
+    const randomIndex = handleRandomIndex(0, list.length - 1);
+    return list[randomIndex];
+  }
+
+  const handleChooseDesign = (list: string) => {
+    const randomIndex = handleRandomIndex(0, list.length - 1);
+    return list[randomIndex];
+  }
+
+  const handleGenerateLogo = async () => {
+    const responseListIcons = await axios.get('http://localhost:3000/listIcons');
+    const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
+    const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
+
+    try{
+      const logoChoosed = handleChooseLogo(responseListIcons.data);
+      const fontChoosed = handleChooseFont(responseListTypeFonts.data);
+      const designChoosed = handleChooseDesign(responseListDesign.data);
+      
+    }catch(error){
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -127,6 +169,8 @@ function App() {
             <button onClick={handleShowLogo}>Gerar</button>
           </ContentButtonGenerateLogo>
         }
+
+        <button onClick={handleGenerateLogo}>TESTE</button>
 
         {nameLogo && nameSlogan &&
           <ContentLogos>
