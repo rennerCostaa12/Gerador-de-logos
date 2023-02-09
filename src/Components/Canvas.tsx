@@ -14,9 +14,9 @@ interface CanvasProps{
 
 const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorIcon }: CanvasProps) => {
 
-    console.log(colorIcon);
-
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
+
+    console.log(colorIcon)
 
     const handleDownloadImage = (event: any) => {
         const link = event.currentTarget;

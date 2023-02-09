@@ -20,7 +20,7 @@ interface DatasLogoProps {
 }
 
 interface ListIconsProps {
-  colors_icons: string;
+  colors_icon: string[];
   id: number;
   type_icon: '2d' | '3d',
   url_icon: string;
@@ -77,13 +77,12 @@ function App() {
     const responseListIcons = await axios.get('http://localhost:3000/listIcons');
     const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
     const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
-    const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan')
+    const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
 
     let listTeste = [];
-    
 
     try{
-      for (let i = 1; i < 6; i++) {
+      for (let i = 1; i < 11; i++) {
         const logoChoosed = handleChooseElement(responseListIcons.data);
         const fontChoosed = handleChooseElement(responseListTypeFonts.data);
         const designChoosed = handleChooseElement(responseListDesign.data);
@@ -100,25 +99,14 @@ function App() {
         listTeste.push(modelJsonGenerate);
       }
       setListLogosGenerated(listTeste as any);
+      handleShowLogo();
     }catch(error){
       console.log(error);
     }
   }
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/logosAvaliable')
-    .then((response) => {
-      setDatasLogo(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }, []);
-
-  const listFilteredTypeImage = datasLogo?.filter((data) => data.icon.model === typeLogo);
-  const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_link_font));
-
-  console.log(listLogosGenerated);
+  const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
+  const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
 
   return (
     <div className="App">
@@ -186,7 +174,7 @@ function App() {
 
         {typeLogo !== undefined && listFonts.length >= 3 &&
           <ContentButtonGenerateLogo>
-            <button onClick={handleShowLogo}>Gerar</button>
+            <button onClick={handleGenerateLogo}>Gerar</button>
           </ContentButtonGenerateLogo>
         }
 
@@ -199,12 +187,12 @@ function App() {
                 <React.Fragment key={index}>
                   <Canvas 
                     colorIcon={value.icon.colors_icon}
-                    typeFontSlogan={value.text.slogan_type_font}
+                    typeFontSlogan={value.fontSlogan}
                     nameLogo={nameLogo} 
                     nameSlogan={nameSlogan} 
                     typeLogo={value.model} 
-                    linkFontName={value.text.link_font_name}
-                    nameFontLink={value.text.name_link_font}
+                    linkFontName={value.text.link}
+                    nameFontLink={value.text.name_font}
                     urlImage={value.icon.url_icon}
                   />
                 </React.Fragment>
