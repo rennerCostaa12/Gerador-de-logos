@@ -56,6 +56,27 @@ function App() {
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
 
+  const handleNextStepNameLogo = () => {
+    if(!nameLogo){
+      alert('Digite o nome de sua logo!');
+      return;
+    }
+
+    if(!nameSlogan){
+      alert('Digite o nome de seu slogan!');
+      return;
+    }
+    setStep(currentStep => currentStep + 1);
+  }
+
+  const handleNextStepSelectTypeIcon = () => {
+    if(!typeLogo){
+      alert('Escolha o tipo de ícone');
+      return;
+    }
+    setStep(currentStep => currentStep + 1);
+  }
+
   const handleShowLogo = () => {
     const valueNameLogo = refNameLogo.current?.value;
     const valueNameSlogan = refNameSlogan.current?.value;
@@ -124,7 +145,7 @@ function App() {
             />
           </ContentInputs>
           <ContentButtonGenerateLogo>
-            <button onClick={() => setStep(step + 1)}>Próximo</button>
+            <button onClick={handleNextStepNameLogo}>Próximo</button>
           </ContentButtonGenerateLogo>
         </>
       )
@@ -142,7 +163,7 @@ function App() {
             </div>
           </ContentSelectTypeImages>
           <ContentButtonGenerateLogo>
-            <button onClick={() => setStep(step + 1)}>Próximo</button>
+            <button onClick={handleNextStepSelectTypeIcon}>Próximo</button>
           </ContentButtonGenerateLogo>
         </>
       )
@@ -201,7 +222,7 @@ function App() {
         </>
       )
     }
-  }, [step, listFonts, typeLogo]);
+  }, [step, listFonts, typeLogo, nameLogo, nameSlogan]);
 
   const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
