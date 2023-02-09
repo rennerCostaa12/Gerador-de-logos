@@ -16,8 +16,6 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
-    console.log(colorIcon)
-
     const handleDownloadImage = (event: any) => {
         const link = event.currentTarget;
         link.download = 'image.png';

@@ -48,6 +48,9 @@ function App() {
   const [nameSlogan, setNameSlogan] = useState<string>('');
   const [typeLogo, setTypeLogo] = useState<'2d' | '3d' | undefined>(undefined);
 
+  const [stepRendered, setStepRendered] = useState<React.ReactNode | null>(null);
+  const [step, setStep] = useState<number>(1);
+
   const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
   
   const refNameLogo = useRef<HTMLInputElement | null>(null);
@@ -73,7 +76,6 @@ function App() {
   }
  
   const handleGenerateLogo = async () => {
-    
     let listTeste = [];
     
     try{
@@ -82,7 +84,7 @@ function App() {
       const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
 
-      for (let indice = 1; indice < 11; indice++) {
+      for (let indice = 1; indice < 51; indice++) {
         const logoChoosed = handleChooseElement(responseListIcons.data);
         const fontChoosed = handleChooseElement(responseListTypeFonts.data);
         const designChoosed = handleChooseElement(responseListDesign.data);
@@ -103,7 +105,103 @@ function App() {
     }catch(error){
       console.log(error);
     }
-  } 
+  }
+
+  useEffect(() => {
+    if(step === 1){
+      setStepRendered(
+        <>
+          <ContentInputs>
+            <input 
+              type="text" 
+              placeholder="Nome da logo" 
+              onChange={(event) => setNameLogo(event.target.value)} 
+            />
+            <input 
+              type="text" 
+              placeholder="Slogan" 
+              onChange={(event) => setNameSlogan(event.target.value)} 
+            />
+          </ContentInputs>
+          <ContentButtonGenerateLogo>
+            <button onClick={() => setStep(step + 1)}>Próximo</button>
+          </ContentButtonGenerateLogo>
+        </>
+      )
+    }else if(step === 2){
+      setStepRendered(
+        <>
+          <ContentSelectTypeImages>
+            <div className="content-images" style={{ border: typeLogo === '2d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('2d')}>
+              <img src="https://cdn-icons-png.flaticon.com/512/5031/5031271.png" alt="2d" />
+              <span>Ícone 2D</span>
+            </div>
+            <div className="content-images" style={{ border: typeLogo === '3d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('3d')}>
+              <img src="https://icon-library.com/images/3d-car-icon/3d-car-icon-6.jpg" alt="3d" />
+              <span>Ícone 3D</span>
+            </div>
+          </ContentSelectTypeImages>
+          <ContentButtonGenerateLogo>
+            <button onClick={() => setStep(step + 1)}>Próximo</button>
+          </ContentButtonGenerateLogo>
+        </>
+      )
+    }else if(step === 3){
+      setStepRendered(
+        <>
+          <ContentSelectTypeFonts>
+            <button
+              style={{ border: listFonts.includes('Montserrat') ? '1px solid blue' : '', fontFamily: 'Montserrat' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Montserrat')}
+              onClick={() => listFonts.length >= 3 || listFonts.includes('Montserrat') ? '' : setListFonts(current => [...current, 'Montserrat'])}
+            >
+              <h1>Montserrat</h1>
+            </button>
+            <button
+              style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Neucha')}
+              onClick={() => listFonts.length >= 3 || listFonts.includes('Neucha') ? '' : setListFonts(current => [...current, 'Neucha'])}
+            >
+              <h1>Neucha</h1>
+            </button>
+            <button
+              style={{ border: listFonts.includes('Niconne') ? '1px solid blue' : '', fontFamily: 'Niconne' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Niconne')}
+              onClick={() => listFonts.length >= 3 || listFonts.includes('Niconne') ? '' : setListFonts(current => [...current, 'Niconne'])}
+            >
+              <h1>Niconne</h1>
+            </button>
+            <button
+              style={{ border: listFonts.includes('Lobster') ? '1px solid blue' : '', fontFamily: 'Lobster' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Lobster')}
+              onClick={() => listFonts.length >= 3 || listFonts.includes('Lobster') ? '' : setListFonts(current => [...current, 'Lobster'])}
+            >
+              <h1>Lobster</h1>
+            </button>
+            <button
+              style={{ border: listFonts.includes('Oswald') ? '1px solid blue' : '', fontFamily: 'Oswald' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Oswald')}
+              onClick={() => listFonts.length >= 3 || listFonts.includes('Oswald') ? '' : setListFonts(current => [...current, 'Oswald'])}
+            >
+              <h1>Oswald</h1>
+            </button>
+            <button
+              style={{ border: listFonts.includes('Itim') ? '1px solid blue' : '', fontFamily: 'Itim' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Itim')}
+              onClick={() => listFonts.length >= 3 || listFonts.includes('Itim') ? '' : setListFonts(current => [...current, 'Itim'])}
+            >
+              <h1>Itim</h1>
+            </button>
+          </ContentSelectTypeFonts>
+          {listFonts.length >= 3 &&
+            <ContentButtonGenerateLogo>
+              <button onClick={handleGenerateLogo}>Gerar</button>
+            </ContentButtonGenerateLogo>
+          }
+        </>
+      )
+    }
+  }, [step, listFonts, typeLogo]);
 
   const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
@@ -111,78 +209,12 @@ function App() {
   return (
     <div className="App">
       <div className="content-logos">
-        <ContentInputs>
-          <input type="text" ref={refNameLogo} placeholder="Nome da logo" />
-          <input type="text" ref={refNameSlogan} placeholder="Slogan" />
-        </ContentInputs>
 
-        <ContentSelectTypeImages>
-          <div className="content-images" style={{ border: typeLogo === '2d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('2d')}>
-            <img src="https://cdn-icons-png.flaticon.com/512/5031/5031271.png" alt="2d" />
-            <span>Ícone 2D</span>
-          </div>
-          <div className="content-images" style={{ border: typeLogo === '3d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('3d')}>
-            <img src="https://icon-library.com/images/3d-car-icon/3d-car-icon-6.jpg" alt="3d" />
-            <span>Ícone 3D</span>
-          </div>
-        </ContentSelectTypeImages>
+        {stepRendered}
 
-        <ContentSelectTypeFonts>
-          <button
-            style={{ border: listFonts.includes('Montserrat') ? '1px solid blue' : '', fontFamily: 'Montserrat' }}
-            disabled={listFonts.length >= 3 && !listFonts.includes('Montserrat')}
-            onClick={() => listFonts.length >= 3 || listFonts.includes('Montserrat') ? '' : setListFonts(current => [...current, 'Montserrat'])}
-          >
-            <h1>Montserrat</h1>
-          </button>
-          <button
-            style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
-            disabled={listFonts.length >= 3 && !listFonts.includes('Neucha')}
-            onClick={() => listFonts.length >= 3 || listFonts.includes('Neucha') ? '' : setListFonts(current => [...current, 'Neucha'])}
-          >
-            <h1>Neucha</h1>
-          </button>
-          <button
-            style={{ border: listFonts.includes('Niconne') ? '1px solid blue' : '', fontFamily: 'Niconne' }}
-            disabled={listFonts.length >= 3 && !listFonts.includes('Niconne')}
-            onClick={() => listFonts.length >= 3 || listFonts.includes('Niconne') ? '' : setListFonts(current => [...current, 'Niconne'])}
-          >
-            <h1>Niconne</h1>
-          </button>
-          <button
-            style={{ border: listFonts.includes('Lobster') ? '1px solid blue' : '', fontFamily: 'Lobster' }}
-            disabled={listFonts.length >= 3 && !listFonts.includes('Lobster')}
-            onClick={() => listFonts.length >= 3 || listFonts.includes('Lobster') ? '' : setListFonts(current => [...current, 'Lobster'])}
-          >
-            <h1>Lobster</h1>
-          </button>
-          <button
-            style={{ border: listFonts.includes('Oswald') ? '1px solid blue' : '', fontFamily: 'Oswald' }}
-            disabled={listFonts.length >= 3 && !listFonts.includes('Oswald')}
-            onClick={() => listFonts.length >= 3 || listFonts.includes('Oswald') ? '' : setListFonts(current => [...current, 'Oswald'])}
-          >
-            <h1>Oswald</h1>
-          </button>
-          <button
-            style={{ border: listFonts.includes('Itim') ? '1px solid blue' : '', fontFamily: 'Itim' }}
-            disabled={listFonts.length >= 3 && !listFonts.includes('Itim')}
-            onClick={() => listFonts.length >= 3 || listFonts.includes('Itim') ? '' : setListFonts(current => [...current, 'Itim'])}
-          >
-            <h1>Itim</h1>
-          </button>
-        </ContentSelectTypeFonts>
-
-        {typeLogo !== undefined && listFonts.length >= 3 &&
-          <ContentButtonGenerateLogo>
-            <button onClick={handleGenerateLogo}>Gerar</button>
-          </ContentButtonGenerateLogo>
-        }
-
-        <button onClick={handleGenerateLogo}>TESTE</button>
-
-        {nameLogo && nameSlogan &&
+        {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
-            {listFilteredTypeFont?.map((value, index) => {
+            {listFilteredTypeFont?.slice(0, 8).map((value, index) => {
               return(
                 <React.Fragment key={index}>
                   <Canvas 
