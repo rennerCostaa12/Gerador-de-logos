@@ -235,7 +235,7 @@ function App() {
 
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
-            {listFilteredTypeFont?.slice(0, 8).map((value, index) => {
+            {listFilteredTypeFont?.map((value, index) => {
               return(
                 <React.Fragment key={index}>
                   <Canvas 
