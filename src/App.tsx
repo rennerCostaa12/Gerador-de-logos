@@ -42,7 +42,6 @@ interface ListLogosGenerateProps {
 
 function App() {
 
-  const [datasLogo, setDatasLogo] = useState<DatasLogoProps[] | null>(null);
   const [listFonts, setListFonts] = useState<string[]>([]);
   
   const [nameLogo, setNameLogo] = useState<string>('');
@@ -74,22 +73,23 @@ function App() {
   }
  
   const handleGenerateLogo = async () => {
-    const responseListIcons = await axios.get('http://localhost:3000/listIcons');
-    const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
-    const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
-    const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
-
+    
     let listTeste = [];
-
+    
     try{
-      for (let i = 1; i < 11; i++) {
+      const responseListIcons = await axios.get('http://localhost:3000/listIcons');
+      const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
+      const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
+      const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
+
+      for (let indice = 1; indice < 11; indice++) {
         const logoChoosed = handleChooseElement(responseListIcons.data);
         const fontChoosed = handleChooseElement(responseListTypeFonts.data);
         const designChoosed = handleChooseElement(responseListDesign.data);
         const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
 
         const modelJsonGenerate = {
-          id: i,
+          id: indice,
           icon: logoChoosed,
           text: fontChoosed,
           fontSlogan: fontSloganChoosed,
@@ -103,7 +103,7 @@ function App() {
     }catch(error){
       console.log(error);
     }
-  }
+  } 
 
   const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
@@ -131,42 +131,42 @@ function App() {
           <button
             style={{ border: listFonts.includes('Montserrat') ? '1px solid blue' : '', fontFamily: 'Montserrat' }}
             disabled={listFonts.length >= 3 && !listFonts.includes('Montserrat')}
-            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Montserrat'])}
+            onClick={() => listFonts.length >= 3 || listFonts.includes('Montserrat') ? '' : setListFonts(current => [...current, 'Montserrat'])}
           >
             <h1>Montserrat</h1>
           </button>
           <button
             style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
             disabled={listFonts.length >= 3 && !listFonts.includes('Neucha')}
-            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Neucha'])}
+            onClick={() => listFonts.length >= 3 || listFonts.includes('Neucha') ? '' : setListFonts(current => [...current, 'Neucha'])}
           >
             <h1>Neucha</h1>
           </button>
           <button
             style={{ border: listFonts.includes('Niconne') ? '1px solid blue' : '', fontFamily: 'Niconne' }}
             disabled={listFonts.length >= 3 && !listFonts.includes('Niconne')}
-            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Niconne'])}
+            onClick={() => listFonts.length >= 3 || listFonts.includes('Niconne') ? '' : setListFonts(current => [...current, 'Niconne'])}
           >
             <h1>Niconne</h1>
           </button>
           <button
             style={{ border: listFonts.includes('Lobster') ? '1px solid blue' : '', fontFamily: 'Lobster' }}
             disabled={listFonts.length >= 3 && !listFonts.includes('Lobster')}
-            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Lobster'])}
+            onClick={() => listFonts.length >= 3 || listFonts.includes('Lobster') ? '' : setListFonts(current => [...current, 'Lobster'])}
           >
             <h1>Lobster</h1>
           </button>
           <button
             style={{ border: listFonts.includes('Oswald') ? '1px solid blue' : '', fontFamily: 'Oswald' }}
             disabled={listFonts.length >= 3 && !listFonts.includes('Oswald')}
-            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Oswald'])}
+            onClick={() => listFonts.length >= 3 || listFonts.includes('Oswald') ? '' : setListFonts(current => [...current, 'Oswald'])}
           >
             <h1>Oswald</h1>
           </button>
           <button
             style={{ border: listFonts.includes('Itim') ? '1px solid blue' : '', fontFamily: 'Itim' }}
             disabled={listFonts.length >= 3 && !listFonts.includes('Itim')}
-            onClick={() => listFonts.length >= 3 ? '' : setListFonts(current => [...current, 'Itim'])}
+            onClick={() => listFonts.length >= 3 || listFonts.includes('Itim') ? '' : setListFonts(current => [...current, 'Itim'])}
           >
             <h1>Itim</h1>
           </button>
