@@ -232,8 +232,6 @@ function App() {
   const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
 
-  console.log(listLogosGenerated)
-
   return (
     <div className="App">
       <div className="content-logos">

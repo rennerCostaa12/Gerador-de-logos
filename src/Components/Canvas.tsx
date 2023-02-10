@@ -83,7 +83,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.9, 30, 100, 100);
                     context.beginPath();
-                    drawText(nameLogo, typeFont, 'normal', 40, 140, 160);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 160);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 190);
                     }
@@ -94,7 +94,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.9, 60, 100, 100);
-                    drawText(nameLogo, typeFont, 'normal', 40, 140, 70);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
                     }
@@ -106,7 +106,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.9, 80, 100, 100);
-                    drawText(nameLogo, typeFont, 'normal', 50, 140, 70);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 90);
                     }
@@ -117,9 +117,9 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 1.55, 65, 100, 100);
-                    drawText(nameLogo, typeFont, 'normal', 35, 80, 120);
+                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 80, 120);
                     if (nameSlogan) {
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 20, 80, 140);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 16, 80, 140);
                     }
                 }
             }
