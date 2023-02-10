@@ -172,7 +172,7 @@
             "name_font": "Itim"
         }
     ],
-    "listTypeDesign": ["type1", "type2", "type3"],
+    "listTypeDesign": ["type1", "type2", "type3", "type4"],
     "listIcons": [
         {
             "id": 1,
@@ -224,9 +224,9 @@
         },
         {
             "id": 10,
-            "url_icon": "https://puravidalodge.com/wp-content/uploads/2019/11/transport-vector-free-icon-set-35.png",
+            "url_icon": "https://www.svgimages.com/svg-image/s6/porsche-steering-wheel-256x256.png",
             "type_icon": "2d",
-            "colors_icon": ["#45CDB3"]
+            "colors_icon": ["#000000"]
         },
         {
             "id": 11,

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Container } from "./styles";
 
-interface CanvasProps{
+interface CanvasProps {
     urlImage: string;
-    typeLogo: 'type1' | 'type2' | 'type3';
+    typeLogo: 'type1' | 'type2' | 'type3' | 'type4';
     nameLogo: string;
     nameSlogan: string | undefined;
     typeFontSlogan: string;
@@ -21,108 +21,119 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
         link.download = 'image.png';
         link.href = refCanvas.current?.toDataURL();
     }
-    
+
     useEffect(() => {
 
         const font = new FontFace(nameFontLink, `url(${linkFontName})`, {
             style: 'normal',
             weight: '400',
-        });   
+        });
 
         font.load().then((font) => {
 
             document.fonts.add(font);
             const canvas = refCanvas.current;
-    
-            if(!canvas){
+
+            if (!canvas) {
                 return;
             }
 
             const context = canvas.getContext('2d');
-    
+
             const image: any = new Image();
             image.crossOrigin = 'Anonymous';
-    
-            if(!context){
+
+            if (!context) {
                 return;
-            } 
+            }
 
             context.rect(0, 0, 280, 250);
             context.fillStyle = '#FFFFFF';
             context.fill();
 
             context.beginPath();
-            
+
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
                 context.fillStyle = colorIcon[0];
                 context.font = `${fontStyle} ${size}px ${nameFontLink}`;
-    
-                if(type === 'stroke'){
+
+                if (type === 'stroke') {
                     context.strokeText(name, coordinatesX, coordinatesY);
-                }else{
+                } else {
                     context.fillText(name, coordinatesX, coordinatesY);
                 }
             }
-    
+
             const drawTextSlogan = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', font: string, size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
                 context.fillStyle = '#000000';
                 context.font = `${fontStyle} ${size}px ${font}`;
-    
-                if(type === 'stroke'){
+
+                if (type === 'stroke') {
                     context.strokeText(name, coordinatesX, coordinatesY);
-                }else{
+                } else {
                     context.fillText(name, coordinatesX, coordinatesY);
                 }
             }
-    
-            if(typeLogo === 'type1'){
+
+            if (typeLogo === 'type1') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width/4, 15, 150, 150);
+                    context.drawImage(image, image.width / 2.9, 30, 100, 100);
                     context.beginPath();
                     drawText(nameLogo, 'fill', 'normal', 40, 140, 160);
-                    if(nameSlogan){
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 138, 190);
+                    if (nameSlogan) {
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 190);
                     }
                 }
             }
-            
-            if(typeLogo === 'type2'){
+
+            if (typeLogo === 'type2') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width/4, 40, 150, 150);
-                    drawText(nameLogo,'fill', 'normal', 40, 140, 70);
-                    if(nameSlogan){
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 138, 170);
+                    context.drawImage(image, image.width / 2.9, 60, 100, 100);
+                    drawText(nameLogo, 'fill', 'normal', 40, 140, 70);
+                    if (nameSlogan) {
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
                     }
                 }
             }
-    
-    
-            if(typeLogo === 'type3'){
+
+
+            if (typeLogo === 'type3') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width/4, 60, 150, 150);
+                    context.drawImage(image, image.width / 2.9, 80, 100, 100);
                     drawText(nameLogo, 'fill', 'normal', 50, 140, 70);
-                    if(nameSlogan){
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 138, 90);
+                    if (nameSlogan) {
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 90);
+                    }
+                }
+            }
+
+            if (typeLogo === 'type4') {
+                image.src = urlImage;
+                image.onload = () => {
+                    context.drawImage(image, image.width / 1.55, 65, 100, 100);
+                    drawText(nameLogo, 'fill', 'normal', 45, 80, 120);
+                    if (nameSlogan) {
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 20, 80, 140);
                     }
                 }
             }
         })
-        .catch((error) => {
-            console.log(error);
-        })
+            .catch((error) => {
+                console.log(error);
+            })
     }, []);
 
-    return(
+    return (
         <Container>
-            <canvas 
-                width={280} 
-                height={250} 
-                style={{ border: '4px solid #000000' }} 
+            <canvas
+                width={280}
+                height={250}
+                style={{ border: '4px solid #000000' }}
                 ref={refCanvas}
             />
 

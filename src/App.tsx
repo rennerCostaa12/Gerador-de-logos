@@ -10,7 +10,7 @@ interface DatasLogoProps {
     model: '2d' | '3d';
     url_icon: string;
   };
-  model: 'type1' | 'type2' | 'type3';
+  model: 'type1' | 'type2' | 'type3' | 'type4';
   text: {
     type_font_slogan: string;
     link_font_name: string;
@@ -37,13 +37,13 @@ interface ListLogosGenerateProps {
   icon: ListIconsProps;
   text: ListTypeFontsProps;
   fontSlogan: string;
-  model: 'type1' | 'type2' | 'type3',
+  model: 'type1' | 'type2' | 'type3' | 'type4',
 }
 
 function App() {
 
   const [listFonts, setListFonts] = useState<string[]>([]);
-  
+
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
   const [typeLogo, setTypeLogo] = useState<'2d' | '3d' | undefined>(undefined);
@@ -52,17 +52,17 @@ function App() {
   const [step, setStep] = useState<number>(1);
 
   const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
-  
+
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
 
   const handleNextStepNameLogo = () => {
-    if(!nameLogo){
+    if (!nameLogo) {
       alert('Digite o nome de sua logo!');
       return;
     }
 
-    if(!nameSlogan){
+    if (!nameSlogan) {
       alert('Digite o nome de seu slogan!');
       return;
     }
@@ -70,7 +70,7 @@ function App() {
   }
 
   const handleNextStepSelectTypeIcon = () => {
-    if(!typeLogo){
+    if (!typeLogo) {
       alert('Escolha o tipo de ícone');
       return;
     }
@@ -81,9 +81,9 @@ function App() {
     const valueNameLogo = refNameLogo.current?.value;
     const valueNameSlogan = refNameSlogan.current?.value;
 
-    if(valueNameLogo && valueNameSlogan){
-        setNameLogo(valueNameLogo);
-        setNameSlogan(valueNameSlogan);
+    if (valueNameLogo && valueNameSlogan) {
+      setNameLogo(valueNameLogo);
+      setNameSlogan(valueNameSlogan);
     }
   }
 
@@ -95,11 +95,11 @@ function App() {
     const randomIndex = handleRandomIndex(0, list.length - 1);
     return list[randomIndex];
   }
- 
+
   const handleGenerateLogo = async () => {
     let listTeste = [];
-    
-    try{
+
+    try {
       const responseListIcons = await axios.get('http://localhost:3000/listIcons');
       const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
       const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
@@ -118,30 +118,30 @@ function App() {
           fontSlogan: fontSloganChoosed,
           model: designChoosed,
         }
-        
+
         listTeste.push(modelJsonGenerate);
       }
       setListLogosGenerated(listTeste as any);
       handleShowLogo();
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    if(step === 1){
+    if (step === 1) {
       setStepRendered(
         <>
           <ContentInputs>
-            <input 
-              type="text" 
-              placeholder="Nome da logo" 
-              onChange={(event) => setNameLogo(event.target.value)} 
+            <input
+              type="text"
+              placeholder="Nome da logo"
+              onChange={(event) => setNameLogo(event.target.value)}
             />
-            <input 
-              type="text" 
-              placeholder="Slogan" 
-              onChange={(event) => setNameSlogan(event.target.value)} 
+            <input
+              type="text"
+              placeholder="Slogan"
+              onChange={(event) => setNameSlogan(event.target.value)}
             />
           </ContentInputs>
           <ContentButtonGenerateLogo>
@@ -149,7 +149,7 @@ function App() {
           </ContentButtonGenerateLogo>
         </>
       )
-    }else if(step === 2){
+    } else if (step === 2) {
       setStepRendered(
         <>
           <ContentSelectTypeImages>
@@ -167,7 +167,7 @@ function App() {
           </ContentButtonGenerateLogo>
         </>
       )
-    }else if(step === 3){
+    } else if (step === 3) {
       setStepRendered(
         <>
           <ContentSelectTypeFonts>
@@ -236,14 +236,14 @@ function App() {
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
             {listFilteredTypeFont?.map((value, index) => {
-              return(
+              return (
                 <React.Fragment key={index}>
-                  <Canvas 
+                  <Canvas
                     colorIcon={value.icon.colors_icon}
                     typeFontSlogan={value.fontSlogan}
-                    nameLogo={nameLogo} 
-                    nameSlogan={nameSlogan} 
-                    typeLogo={value.model} 
+                    nameLogo={nameLogo}
+                    nameSlogan={nameSlogan}
+                    typeLogo={value.model}
                     linkFontName={value.text.link}
                     nameFontLink={value.text.name_font}
                     urlImage={value.icon.url_icon}
