@@ -30,6 +30,7 @@ interface ListTypeFontsProps {
   id: number;
   link: string;
   name_font: string;
+  type_text: 'fill' | 'stroke';
 }
 
 interface ListLogosGenerateProps {
@@ -104,12 +105,16 @@ function App() {
       const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
       const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
+      const responseListTypeText = await axios.get('http://localhost:3000/typesText');
 
       for (let indice = 1; indice < 51; indice++) {
         const logoChoosed = handleChooseElement(responseListIcons.data);
-        const fontChoosed = handleChooseElement(responseListTypeFonts.data);
+        const fontChoosed = handleChooseElement(responseListTypeFonts.data) as any;
         const designChoosed = handleChooseElement(responseListDesign.data);
         const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
+        const typeText = handleChooseElement(responseListTypeText.data);
+
+        fontChoosed['type_text'] = typeText;
 
         const modelJsonGenerate = {
           id: indice,
@@ -227,6 +232,8 @@ function App() {
   const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
 
+  console.log(listLogosGenerated)
+
   return (
     <div className="App">
       <div className="content-logos">
@@ -239,6 +246,7 @@ function App() {
               return (
                 <React.Fragment key={index}>
                   <Canvas
+                    typeFont={value.text && value.text.type_text}
                     colorIcon={value.icon.colors_icon}
                     typeFontSlogan={value.fontSlogan}
                     nameLogo={nameLogo}
