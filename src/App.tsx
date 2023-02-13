@@ -57,6 +57,17 @@ function App() {
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
 
+  const handleSelectsTypFonts = (font: string) => {
+    if (!listFonts.includes(font)) {
+      setListFonts(currentData => [...currentData, font]);
+    }
+
+    if(listFonts.includes(font)){
+      const removeListFonts = listFonts.filter((data) => data !== font);
+      setListFonts(removeListFonts);
+    }
+  }
+
   const handleNextStepNameLogo = () => {
     if (!nameLogo) {
       alert('Digite o nome de sua logo!');
@@ -179,42 +190,42 @@ function App() {
             <button
               style={{ border: listFonts.includes('Montserrat') ? '1px solid blue' : '', fontFamily: 'Montserrat' }}
               disabled={listFonts.length >= 3 && !listFonts.includes('Montserrat')}
-              onClick={() => listFonts.length >= 3 || listFonts.includes('Montserrat') ? '' : setListFonts(current => [...current, 'Montserrat'])}
+              onClick={() => handleSelectsTypFonts('Montserrat')}
             >
               <h1>Montserrat</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
               disabled={listFonts.length >= 3 && !listFonts.includes('Neucha')}
-              onClick={() => listFonts.length >= 3 || listFonts.includes('Neucha') ? '' : setListFonts(current => [...current, 'Neucha'])}
+              onClick={() => handleSelectsTypFonts('Neucha')}
             >
               <h1>Neucha</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Niconne') ? '1px solid blue' : '', fontFamily: 'Niconne' }}
               disabled={listFonts.length >= 3 && !listFonts.includes('Niconne')}
-              onClick={() => listFonts.length >= 3 || listFonts.includes('Niconne') ? '' : setListFonts(current => [...current, 'Niconne'])}
+              onClick={() => handleSelectsTypFonts('Niconne')}
             >
               <h1>Niconne</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Lobster') ? '1px solid blue' : '', fontFamily: 'Lobster' }}
               disabled={listFonts.length >= 3 && !listFonts.includes('Lobster')}
-              onClick={() => listFonts.length >= 3 || listFonts.includes('Lobster') ? '' : setListFonts(current => [...current, 'Lobster'])}
+              onClick={() => handleSelectsTypFonts('Lobster')}
             >
               <h1>Lobster</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Oswald') ? '1px solid blue' : '', fontFamily: 'Oswald' }}
               disabled={listFonts.length >= 3 && !listFonts.includes('Oswald')}
-              onClick={() => listFonts.length >= 3 || listFonts.includes('Oswald') ? '' : setListFonts(current => [...current, 'Oswald'])}
+              onClick={() => handleSelectsTypFonts('Oswald')}
             >
               <h1>Oswald</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Itim') ? '1px solid blue' : '', fontFamily: 'Itim' }}
               disabled={listFonts.length >= 3 && !listFonts.includes('Itim')}
-              onClick={() => listFonts.length >= 3 || listFonts.includes('Itim') ? '' : setListFonts(current => [...current, 'Itim'])}
+              onClick={() => handleSelectsTypFonts('Itim')}
             >
               <h1>Itim</h1>
             </button>
@@ -231,6 +242,8 @@ function App() {
 
   const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
   const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
+
+  console.log(listFonts);
 
   return (
     <div className="App">
