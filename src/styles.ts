@@ -74,7 +74,7 @@ export const ContentButtonGenerateLogo = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 1rem;
+    margin: 1rem 0;
 
     button{
         font-size: 20px;
@@ -93,4 +93,42 @@ export const ContentLogos = styled.div`
     justify-content: center;
     padding: 10px;
     flex-wrap: wrap;
+`
+
+export const ContentListIcons = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    > div {
+        border: 1px solid #000000;
+        padding: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover{
+            transition: all ease 0.3s;
+            border: 1px solid red;
+        }
+    }
+`
+
+export const ContentListIconsSelected = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 2rem 0;
+    
+    > div{
+        border: 1px dashed #000;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+        
+        &:hover{
+            transition: ease-in-out 0.3s;
+            border: 1px dashed blue;
+        }
+    }
 `

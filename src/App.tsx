@@ -1,7 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import Canvas from "./Components/Canvas";
 import axios from "axios";
-import { ContentLogos, ContentInputs, ContentSelectTypeImages, ContentButtonGenerateLogo, ContentSelectTypeFonts } from './styles';
+import {
+  ContentLogos,
+  ContentInputs,
+  ContentSelectTypeImages,
+  ContentButtonGenerateLogo,
+  ContentSelectTypeFonts,
+  ContentListIcons,
+  ContentListIconsSelected
+} from './styles';
 
 interface DatasLogoProps {
   id: number;
@@ -33,9 +41,19 @@ interface ListTypeFontsProps {
   type_text: 'fill' | 'stroke';
 }
 
+interface IconsFindedProps {
+  category: string;
+  commonName: string
+  id: string;
+  isColor: boolean;
+  name: string;
+  platform: string;
+  sourceFormat: string;
+}
+
 interface ListLogosGenerateProps {
   id: number;
-  icon: ListIconsProps;
+  icon: IconsFindedProps;
   text: ListTypeFontsProps;
   fontSlogan: string;
   model: 'type1' | 'type2' | 'type3' | 'type4',
@@ -52,10 +70,40 @@ function App() {
   const [stepRendered, setStepRendered] = useState<React.ReactNode | null>(null);
   const [step, setStep] = useState<number>(1);
 
+  const [iconsFinded, setIconsFinded] = useState<IconsFindedProps[]>([]);
+  const [iconsSelected, setIconsSelected] = useState<any>([]);
+
   const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
 
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
+
+  const limitChoosedIcons = 5;
+
+  const handleChooseIcon = (dataIcon: IconsFindedProps) => {
+    if (iconsSelected.length < 5) {
+      setIconsSelected((currentItem: IconsFindedProps[]) => [...currentItem, dataIcon]);
+    } else {
+      alert(`O limite é de ${iconsSelected.length} ícones`);
+    }
+  }
+
+  const handleRemoveIconChoosed = (dataIcon: IconsFindedProps) => {
+    const removeIconSelected = iconsSelected.filter((data: IconsFindedProps) => data.id !== dataIcon.id);
+    setIconsSelected(removeIconSelected);
+  }
+
+  const handleIcons = async (search: string) => {
+    try {
+      const responseIcons = await axios({
+        method: 'get',
+        url: `https://search.icons8.com/api/iconsets/v5/search?term=${search}&limit=11&lang=pt&amount=100&platform=all&authors=icons8&isColor=true&token=Xx9ICWvRoVL2lEbqqVdMujOohxwLCUpY7trUZNYT`
+      })
+      setIconsFinded(responseIcons.data.icons);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleNextStepNameLogo = () => {
     if (!nameLogo) {
@@ -70,11 +118,12 @@ function App() {
     setStep(currentStep => currentStep + 1);
   }
 
-  const handleNextStepSelectTypeIcon = () => {
-    if (!typeLogo) {
-      alert('Escolha o tipo de ícone');
+  const handleNextStepSelectIcons = () => {
+    if (iconsSelected.length < 5) {
+      alert('Selecione os cincos itens');
       return;
     }
+
     setStep(currentStep => currentStep + 1);
   }
 
@@ -101,14 +150,13 @@ function App() {
     let listTeste = [];
 
     try {
-      const responseListIcons = await axios.get('http://localhost:3000/listIcons');
       const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
       const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
       const responseListTypeText = await axios.get('http://localhost:3000/typesText');
 
       for (let indice = 1; indice < 51; indice++) {
-        const logoChoosed = handleChooseElement(responseListIcons.data);
+        const logoChoosed = handleChooseElement(iconsSelected);
         const fontChoosed = handleChooseElement(responseListTypeFonts.data) as any;
         const designChoosed = handleChooseElement(responseListDesign.data);
         const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
@@ -157,19 +205,35 @@ function App() {
     } else if (step === 2) {
       setStepRendered(
         <>
-          <ContentSelectTypeImages>
-            <div className="content-images" style={{ border: typeLogo === '2d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('2d')}>
-              <img src="https://cdn-icons-png.flaticon.com/512/5031/5031271.png" alt="2d" />
-              <span>Ícone 2D</span>
-            </div>
-            <div className="content-images" style={{ border: typeLogo === '3d' ? '2px solid red' : '' }} onClick={() => setTypeLogo('3d')}>
-              <img src="https://icon-library.com/images/3d-car-icon/3d-car-icon-6.jpg" alt="3d" />
-              <span>Ícone 3D</span>
-            </div>
-          </ContentSelectTypeImages>
-          <ContentButtonGenerateLogo>
-            <button onClick={handleNextStepSelectTypeIcon}>Próximo</button>
-          </ContentButtonGenerateLogo>
+          <ContentListIcons>
+            {iconsFinded.slice(0, 26).map((value, index) => {
+              return (
+                <div onClick={() => handleChooseIcon(value)} key={index}>
+                  <img src={`https://img.icons8.com/${value.commonName}`} alt={`icon-${value.name}`} />
+                </div>
+              )
+            })}
+          </ContentListIcons>
+
+          {iconsSelected.length > 0 &&
+            <>
+              <ContentListIconsSelected>
+                {iconsSelected.map((value: IconsFindedProps, index: number) => {
+                  return (
+                    <div key={index} onClick={() => handleRemoveIconChoosed(value)}>
+                      {value && <img src={`https://img.icons8.com/${value.commonName}`} alt={`icon-${value.name}`} />}
+                    </div>
+                  )
+                })}
+              </ContentListIconsSelected>
+              <span style={{ display: 'block', fontSize: '30px', textAlign: 'center' }}>{iconsSelected.length}/{limitChoosedIcons}</span>
+              {iconsSelected.length === 5 &&
+                <ContentButtonGenerateLogo>
+                  <button onClick={handleNextStepSelectIcons}>Próximo</button>
+                </ContentButtonGenerateLogo>
+              }
+            </>
+          }
         </>
       )
     } else if (step === 3) {
@@ -227,10 +291,16 @@ function App() {
         </>
       )
     }
-  }, [step, listFonts, typeLogo, nameLogo, nameSlogan]);
+  }, [step, listFonts, iconsSelected, nameLogo, nameSlogan]);
 
-  const listFilteredTypeImage = listLogosGenerated?.filter((data) => data.icon.type_icon === typeLogo);
-  const listFilteredTypeFont = listFilteredTypeImage?.filter((data) => listFonts.includes(data.text.name_font));
+  useEffect(() => {
+    handleIcons('car');
+  }, []);
+
+
+  const listFilteredTypeFont = listLogosGenerated?.filter((data) => listFonts.includes(data.text.name_font));
+
+  console.log(listFilteredTypeFont);
 
   return (
     <div className="App">
@@ -245,14 +315,14 @@ function App() {
                 <React.Fragment key={index}>
                   <Canvas
                     typeFont={value.text && value.text.type_text}
-                    colorIcon={value.icon.colors_icon}
+                    colorIcon={['#000000']}
                     typeFontSlogan={value.fontSlogan}
                     nameLogo={nameLogo}
                     nameSlogan={nameSlogan}
                     typeLogo={value.model}
                     linkFontName={value.text.link}
                     nameFontLink={value.text.name_font}
-                    urlImage={value.icon.url_icon}
+                    urlImage={value.icon.commonName}
                   />
                 </React.Fragment>
               )

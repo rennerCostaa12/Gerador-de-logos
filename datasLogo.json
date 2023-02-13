@@ -241,6 +241,6 @@
             "colors_icon": ["#272727"]
         }
     ],
-    "fontStyleSlogan": ["Montserrat", "Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"],
+    "fontStyleSlogan": ["Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"],
     "typesText": ["stroke", "fill"]
 }
