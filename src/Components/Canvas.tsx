@@ -24,7 +24,6 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
     }
 
     useEffect(() => {
-
         const font = new FontFace(nameFontLink, `url(${linkFontName})`, {
             style: 'normal',
             weight: '400',
@@ -79,9 +78,9 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             }
 
             if (typeLogo === 'type1') {
-                image.src = urlImage;
+                image.src = 'https://cdn-icons-png.flaticon.com/256/89/89102.png';
                 image.onload = () => {
-                    context.drawImage(image, image.width / 2.9, 30, 100, 100);
+                    context.drawImage(image, image.width / 2.35, 50, 60, 60);
                     context.beginPath();
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 160);
                     if (nameSlogan) {
@@ -93,7 +92,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             if (typeLogo === 'type2') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 2.9, 60, 100, 100);
+                    context.drawImage(image, image.width / 2.35, 80, 60, 60);
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
@@ -105,7 +104,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             if (typeLogo === 'type3') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 2.9, 80, 100, 100);
+                    context.drawImage(image, image.width / 2.35, 100, 60, 60);
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 90);
@@ -116,10 +115,10 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             if (typeLogo === 'type4') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 1.55, 65, 100, 100);
-                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 80, 120);
+                    context.drawImage(image, image.width / 1.5, 85, 60, 60);
+                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 90, 120);
                     if (nameSlogan) {
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 16, 80, 140);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 16, 90, 140);
                     }
                 }
             }

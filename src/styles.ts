@@ -74,15 +74,22 @@ export const ContentButtonGenerateLogo = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 1rem;
+    gap: 20px;
+    margin: 1rem 0;
+
+    button:nth-child(1){
+        border: 1px solid red;
+        background: none;
+        color: red;
+    }
 
     button{
         font-size: 20px;
         padding: 0.5rem 1rem;
         cursor: pointer;
         background-color: red;
-        color: blue;
-        border: 1px solid #000000;
+        color: white;
+        border: 1px solid red;
         font-weight: bold;
     }
 `
@@ -93,4 +100,50 @@ export const ContentLogos = styled.div`
     justify-content: center;
     padding: 10px;
     flex-wrap: wrap;
+`
+
+export const ContentListIcons = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    > button {
+        img{
+            width: 100px;
+        }
+        background: none;
+        border: 1px solid #000000;
+        padding: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover{
+            transition: all ease 0.3s;
+            border: 1px solid red;
+        }
+    }
+`
+
+export const ContentListIconsSelected = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 2rem 0;
+    
+    > button{
+        img{
+            width: 150px;
+        }
+        background: none;
+        border: 1px dashed #000;
+        cursor: pointer;
+        padding: 1rem;
+        border-radius: 8px;
+        
+        &:hover{
+            transition: ease-in-out 0.3s;
+            border: 1px dashed blue;
+        }
+    }
 `

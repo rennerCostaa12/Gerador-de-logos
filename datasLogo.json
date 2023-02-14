@@ -241,6 +241,72 @@
             "colors_icon": ["#272727"]
         }
     ],
-    "fontStyleSlogan": ["Montserrat", "Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"],
+    "listFlatIcons": [
+        {
+            "id": 1,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/2736/2736918.png"
+        },
+        {
+            "id": 2,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/89/89102.png"
+        },
+        {
+            "id": 3,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/67/67994.png"
+        },
+        {
+            "id": 4,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/3054/3054929.png"
+        },
+        {
+            "id": 5,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/9716/9716698.png"
+        },
+        {
+            "id": 6,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/48/48688.png"
+        },
+        {
+            "id": 7,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/550/550907.png"
+        },
+        {
+            "id": 8,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/9716/9716696.png"
+        },
+        {
+            "id": 9,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/1048/1048315.png"
+        },
+        {
+            "id": 10,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/55/55283.png"
+        },
+        {
+            "id": 11,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/2555/2555013.png"
+        },
+        {
+            "id": 12,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/1048/1048313.png"
+        },
+        {
+            "id": 13,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/2736/2736953.png"
+        },
+        {
+            "id": 14,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/9714/9714799.png"
+        },
+        {
+            "id": 15,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/3190/3190249.png"
+        },
+        {
+            "id": 16,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/9716/9716206.png"
+        }
+    ],
+    "fontStyleSlogan": ["Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"],
     "typesText": ["stroke", "fill"]
 }
