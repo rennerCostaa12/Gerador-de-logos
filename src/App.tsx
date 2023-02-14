@@ -4,11 +4,11 @@ import axios from "axios";
 import {
   ContentLogos,
   ContentInputs,
-  ContentSelectTypeImages,
   ContentButtonGenerateLogo,
   ContentSelectTypeFonts,
   ContentListIcons,
-  ContentListIconsSelected
+  ContentListIconsSelected,
+  ContentSelectStyleBackground
 } from './styles';
 
 interface ListIconsProps {
@@ -46,6 +46,7 @@ const App = () => {
   const [iconsFinded, setIconsFinded] = useState<IconsFindedProps[]>([]);
   const [iconsSelected, setIconsSelected] = useState<any>([]);
   const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
+  const [isBackgroundStyle, setIsBackgroundStyle] = useState<boolean | null>(null);
   
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
@@ -306,13 +307,41 @@ const App = () => {
 
   const listFilteredTypeFont = listLogosGenerated?.filter((data) => listFonts.includes(data.text.name_font));
 
-  console.log(listFilteredTypeFont);
-
   return(
     <div className="App">
       <div className="content-logos">
 
         {stepRendered}
+
+        <ContentSelectStyleBackground>
+          <h1>Estilos de Logo</h1>
+
+          <div className="content-cards">
+            <div 
+              style={{ border: isBackgroundStyle ? "2px solid blue" : "" }}
+              onClick={() => setIsBackgroundStyle(true)}
+            >
+              <div>
+                <img src="img/backgroundstyle-circle.png" alt="background-style-circle" />
+              </div>
+              <div>
+                <img src="img/backgroundstyle-triangle.png" alt="background-style-triangle" />
+              </div>
+            </div>
+            
+            <div 
+              style={{ border: !isBackgroundStyle ? "2px solid blue" : "" }}
+              onClick={() => setIsBackgroundStyle(false)}
+            >
+              <div>
+                <img src="img/backgroundstyle-normal-1.png" alt="background-style-normal-1" />
+              </div>
+              <div>
+                <img src="img/backgroundstyle-normal-2.png" alt="background-style-normal-2" />
+              </div>
+            </div>
+          </div>
+        </ContentSelectStyleBackground>
 
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
