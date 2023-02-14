@@ -12,9 +12,12 @@ interface CanvasProps {
     nameFontLink: string;
     colorSlogan: string;
     backgroundModel: 'circle' | 'triangle' | null;
+    colorBackgroundModel: string;
 }
 
-const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorSlogan, typeFont, backgroundModel }: CanvasProps) => {
+const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorSlogan, typeFont, backgroundModel, colorBackgroundModel }: CanvasProps) => {
+
+    console.log(urlImage);
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -56,28 +59,28 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             if(typeLogo === 'type1' && backgroundModel === 'circle'){
                 context.beginPath();    
                 context.arc(138, 79, 70, 0, 2 * Math.PI);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
             if(typeLogo === 'type2' && backgroundModel === 'circle'){
                 context.beginPath();
                 context.arc(138, 110, 80, 0, 2 * Math.PI);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
             if(typeLogo === 'type3' && backgroundModel === 'circle'){
                 context.beginPath();
                 context.arc(138, 130, 70, 0, 2 * Math.PI);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
             if(typeLogo === 'type4' && backgroundModel === 'circle'){
                 context.beginPath();
                 context.arc(200, 115, 70, 0, 2 * Math.PI);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
@@ -87,7 +90,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.lineTo(20,155);
                 context.lineTo(260,155);
                 context.lineTo(140,20);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
@@ -97,7 +100,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.lineTo(20,155);
                 context.lineTo(260,155);
                 context.lineTo(140,20);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
@@ -107,7 +110,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.lineTo(20,165);
                 context.lineTo(260,165);
                 context.lineTo(140,20);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
@@ -118,18 +121,19 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.lineTo(120,160);
                 context.lineTo(275,160);
                 context.lineTo(200,20);
-                context.fillStyle = '#F2B1AF';
+                context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
-                context.fillStyle = colorSlogan;
                 context.font = `${fontStyle} ${size}px ${nameFontLink}`;
-
+                
                 if (type === 'stroke') {
+                    context.strokeStyle = colorSlogan;
                     context.strokeText(name, coordinatesX, coordinatesY);
                 } else {
+                    context.fillStyle = colorSlogan;
                     context.fillText(name, coordinatesX, coordinatesY);
                 }
             }
@@ -147,7 +151,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             }
 
             if (typeLogo === 'type1') {
-                image.src = 'https://cdn-icons-png.flaticon.com/256/89/89102.png';
+                image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 50, 60, 60);;
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 140);

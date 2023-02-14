@@ -305,10 +305,43 @@
         {
             "id": 16,
             "url_icon": "https://cdn-icons-png.flaticon.com/256/9716/9716206.png"
+        },
+        {
+            "id": 17,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/1023/1023757.png"
+        },
+        {
+            "id": 18,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/1023/1023655.png"
+        },
+        {
+            "id": 19,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/1068/1068620.png"
+        },
+        {
+            "id": 20,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/2168/2168526.png"
+        },
+        {
+            "id": 21,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/2077/2077164.png"
+        },
+        {
+            "id": 22,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/75/75782.png"
+        },
+        {
+            "id": 23,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/4744/4744199.png"
+        },
+        {
+            "id": 24,
+            "url_icon": "https://cdn-icons-png.flaticon.com/256/2125/2125190.png"
         }
     ],
     "fontStyleSlogan": ["Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"],
     "typesText": ["stroke", "fill"],
-    "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7"],
-    "backgroundStyleLogo": ["circle", "triangle", null]
+    "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7", "#000000"],
+    "backgroundStyleLogo": ["circle", "triangle", null],
+    "backgroundStyleColor": ["#C1A8C0", "#E99591", "#F2D3AF", "#CE4346", "#C96355"]
 }

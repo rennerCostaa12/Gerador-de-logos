@@ -38,6 +38,7 @@ interface ListLogosGenerateProps {
   fontSlogan: string;
   model: 'type1' | 'type2' | 'type3' | 'type4';
   backgroundModel: 'circle' | 'triangle' | null;
+  colorBackgroundModel: string;
 }
 
 const App = () => {
@@ -144,7 +145,8 @@ const App = () => {
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
       const responseListTypeText = await axios.get('http://localhost:3000/typesText');
       const responseListColors = await axios.get('http://localhost:3000/listColors');
-      const responseBackgroundStyleLogo = await axios.get('http://localhost:3000/backgroundStyleLogo');
+      const responseListBackgroundStyleLogo = await axios.get('http://localhost:3000/backgroundStyleLogo');
+      const responseListBackgroundStyleColor = await axios.get('http://localhost:3000/backgroundStyleColor');
 
       for (let indice = 1; indice < 51; indice++) {
 
@@ -154,7 +156,8 @@ const App = () => {
         const designChoosed = handleChooseElement(responseListDesign.data);
         const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
         const typeText = handleChooseElement(responseListTypeText.data);
-        const backgroundLogoStyle = handleChooseElement(responseBackgroundStyleLogo.data);
+        const backgroundLogoStyle = handleChooseElement(responseListBackgroundStyleLogo.data);
+        const backgroundLogoColor = handleChooseElement(responseListBackgroundStyleColor.data);
 
         fontChoosed['type_text'] = typeText;
         fontChoosed['color_text'] = colorTextChoosed;
@@ -165,7 +168,8 @@ const App = () => {
           text: fontChoosed,
           fontSlogan: fontSloganChoosed,
           model: designChoosed,
-          backgroundModel: backgroundLogoStyle
+          backgroundModel: backgroundLogoStyle,
+          colorBackgroundModel: backgroundLogoColor
         }
 
         listTeste.push(modelJsonGenerate);
@@ -317,6 +321,7 @@ const App = () => {
                 <React.Fragment key={index}>
                   <Canvas
                     backgroundModel={value.backgroundModel}
+                    colorBackgroundModel={value.colorBackgroundModel}
                     typeFont={value.text && value.text.type_text}
                     colorSlogan={value.text.color_text}
                     typeFontSlogan={value.fontSlogan}
