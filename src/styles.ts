@@ -104,6 +104,7 @@ export const ContentLogos = styled.div`
 
 export const ContentListIcons = styled.div`
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 

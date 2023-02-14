@@ -38,24 +38,21 @@ interface ListLogosGenerateProps {
   model: 'type1' | 'type2' | 'type3' | 'type4',
 }
 
-function App() {
-
+const App = () => {
   const [listFonts, setListFonts] = useState<string[]>([]);
-
+  const [iconsFinded, setIconsFinded] = useState<IconsFindedProps[]>([]);
+  const [iconsSelected, setIconsSelected] = useState<any>([]);
+  const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
+  
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
 
   const [stepRendered, setStepRendered] = useState<React.ReactNode | null>(null);
   const [step, setStep] = useState<number>(1);
-
-  const [iconsFinded, setIconsFinded] = useState<IconsFindedProps[]>([]);
-  const [iconsSelected, setIconsSelected] = useState<any>([]);
-
-  const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
-
+  
   const refNameLogo = useRef<HTMLInputElement | null>(null);
   const refNameSlogan = useRef<HTMLInputElement | null>(null);
-  
+
   const limitChoosedIcons = 5;
 
   const handleChooseIcon = (dataIcon: IconsFindedProps) => {    
@@ -69,6 +66,18 @@ function App() {
   const handleRemoveIconChoosed = (dataIcon: IconsFindedProps) => {
     const removeIconSelected = iconsSelected.filter((data: IconsFindedProps) => data.id !== dataIcon.id);
     setIconsSelected(removeIconSelected);
+  
+  }
+
+  const handleSelectsTypFonts = (font: string) => {
+    if (!listFonts.includes(font)) {
+      setListFonts(currentData => [...currentData, font]);
+    }
+
+    if(listFonts.includes(font)){
+      const removeListFonts = listFonts.filter((data) => data !== font);
+      setListFonts(removeListFonts);
+    }
   }
 
   const handleIcons = async () => {
@@ -80,6 +89,8 @@ function App() {
       setIconsFinded(responseIcons.data);
     } catch (error) {
       console.log(error);
+    }
+  }
 
   const handleNextStepNameLogo = () => {
     if (!nameLogo) {
@@ -279,12 +290,9 @@ function App() {
     handleIcons();
   }, []);
 
-
   const listFilteredTypeFont = listLogosGenerated?.filter((data) => listFonts.includes(data.text.name_font));
-
-  console.log(listFonts);
-
-  return (
+  
+  return(
     <div className="App">
       <div className="content-logos">
 
@@ -315,4 +323,5 @@ function App() {
     </div>
   )
 }
-export default App
+
+export default App;
