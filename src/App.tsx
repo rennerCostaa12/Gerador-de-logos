@@ -223,6 +223,7 @@ function App() {
               <span style={{ display: 'block', fontSize: '30px', textAlign: 'center' }}>{iconsSelected.length}/{limitChoosedIcons}</span>
               {iconsSelected.length === 5 &&
                 <ContentButtonGenerateLogo>
+                  <button onClick={() => setStep(currentStep => currentStep - 1)}>Voltar</button>
                   <button onClick={handleNextStepSelectIcons}>Próximo</button>
                 </ContentButtonGenerateLogo>
               }
@@ -279,6 +280,7 @@ function App() {
           </ContentSelectTypeFonts>
           {listFonts.length >= 3 &&
             <ContentButtonGenerateLogo>
+              <button onClick={() => setStep(currentStep => currentStep - 1)}>Voltar</button>
               <button onClick={handleGenerateLogo}>Gerar</button>
             </ContentButtonGenerateLogo>
           }

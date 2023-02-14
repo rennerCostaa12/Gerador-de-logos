@@ -74,15 +74,22 @@ export const ContentButtonGenerateLogo = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    gap: 20px;
     margin: 1rem 0;
+
+    button:nth-child(1){
+        border: 1px solid red;
+        background: none;
+        color: red;
+    }
 
     button{
         font-size: 20px;
         padding: 0.5rem 1rem;
         cursor: pointer;
         background-color: red;
-        color: blue;
-        border: 1px solid #000000;
+        color: white;
+        border: 1px solid red;
         font-weight: bold;
     }
 `
