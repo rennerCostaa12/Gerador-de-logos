@@ -42,13 +42,8 @@ interface ListTypeFontsProps {
 }
 
 interface IconsFindedProps {
-  category: string;
-  commonName: string
-  id: string;
-  isColor: boolean;
-  name: string;
-  platform: string;
-  sourceFormat: string;
+  id: number;
+  url_icon: string;
 }
 
 interface ListLogosGenerateProps {
@@ -65,7 +60,6 @@ function App() {
 
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
-  const [typeLogo, setTypeLogo] = useState<'2d' | '3d' | undefined>(undefined);
 
   const [stepRendered, setStepRendered] = useState<React.ReactNode | null>(null);
   const [step, setStep] = useState<number>(1);
@@ -93,13 +87,13 @@ function App() {
     setIconsSelected(removeIconSelected);
   }
 
-  const handleIcons = async (search: string) => {
+  const handleIcons = async () => {
     try {
       const responseIcons = await axios({
         method: 'get',
-        url: `https://search.icons8.com/api/iconsets/v5/search?term=${search}&limit=11&lang=pt&amount=100&platform=all&authors=icons8&isColor=true&token=Xx9ICWvRoVL2lEbqqVdMujOohxwLCUpY7trUZNYT`
+        url: 'http://localhost:3000/listFlatIcons'
       })
-      setIconsFinded(responseIcons.data.icons);
+      setIconsFinded(responseIcons.data);
     } catch (error) {
       console.log(error);
     }
@@ -209,7 +203,7 @@ function App() {
             {iconsFinded.slice(0, 26).map((value, index) => {
               return (
                 <div onClick={() => handleChooseIcon(value)} key={index}>
-                  <img src={`https://img.icons8.com/${value.commonName}`} alt={`icon-${value.name}`} />
+                  <img src={value.url_icon} alt={`icon-${value.id}`} />
                 </div>
               )
             })}
@@ -221,7 +215,7 @@ function App() {
                 {iconsSelected.map((value: IconsFindedProps, index: number) => {
                   return (
                     <div key={index} onClick={() => handleRemoveIconChoosed(value)}>
-                      {value && <img src={`https://img.icons8.com/${value.commonName}`} alt={`icon-${value.name}`} />}
+                      {value && <img src={value.url_icon} alt={`icon-${value.id}`} />}
                     </div>
                   )
                 })}
@@ -294,7 +288,7 @@ function App() {
   }, [step, listFonts, iconsSelected, nameLogo, nameSlogan]);
 
   useEffect(() => {
-    handleIcons('car');
+    handleIcons();
   }, []);
 
 
@@ -322,7 +316,7 @@ function App() {
                     typeLogo={value.model}
                     linkFontName={value.text.link}
                     nameFontLink={value.text.name_font}
-                    urlImage={value.icon.commonName}
+                    urlImage={value.icon.url_icon}
                   />
                 </React.Fragment>
               )

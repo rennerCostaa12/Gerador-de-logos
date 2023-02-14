@@ -17,6 +17,8 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
+    console.log(urlImage);
+
     const handleDownloadImage = (event: any) => {
         const link = event.currentTarget;
         link.download = 'image.png';
@@ -78,9 +80,9 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             }
 
             if (typeLogo === 'type1') {
-                image.src = `https://img.icons8.com/${urlImage}`;
+                image.src = 'https://cdn-icons-png.flaticon.com/256/89/89102.png';
                 image.onload = () => {
-                    context.drawImage(image, image.width / 0.58, 70, 60, 60);
+                    context.drawImage(image, image.width / 2.35, 50, 60, 60);
                     context.beginPath();
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 160);
                     if (nameSlogan) {
@@ -90,9 +92,9 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             }
 
             if (typeLogo === 'type2') {
-                image.src = `https://img.icons8.com/${urlImage}`;
+                image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 0.58, 80, 60, 60);
+                    context.drawImage(image, image.width / 2.35, 80, 60, 60);
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
@@ -102,9 +104,9 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
 
 
             if (typeLogo === 'type3') {
-                image.src = `https://img.icons8.com/${urlImage}`;
+                image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 0.58, 100, 60, 60);
+                    context.drawImage(image, image.width / 2.35, 100, 60, 60);
                     drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 90);
@@ -113,9 +115,9 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             }
 
             if (typeLogo === 'type4') {
-                image.src = `https://img.icons8.com/${urlImage}`;
+                image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 0.35, 85, 60, 60);
+                    context.drawImage(image, image.width / 1.5, 85, 60, 60);
                     drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 90, 120);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 16, 90, 140);

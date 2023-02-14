@@ -101,6 +101,9 @@ export const ContentListIcons = styled.div`
     gap: 20px;
 
     > div {
+        img{
+            width: 100px;
+        }
         border: 1px solid #000000;
         padding: 0.5rem;
         border-radius: 5px;
@@ -121,6 +124,9 @@ export const ContentListIconsSelected = styled.div`
     margin: 2rem 0;
     
     > div{
+        img{
+            width: 150px;
+        }
         border: 1px dashed #000;
         cursor: pointer;
         padding: 0.5rem;
