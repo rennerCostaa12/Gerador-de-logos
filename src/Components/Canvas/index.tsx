@@ -1,3 +1,4 @@
+import Menu from "../Menu";
 import { useEffect, useRef } from "react";
 import { Container } from "./styles";
 
@@ -130,13 +131,13 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
 
     return (
         <Container>
+            <Menu />
             <canvas
                 width={280}
                 height={250}
                 style={{ border: '4px solid #000000' }}
                 ref={refCanvas}
             />
-
             <a className="btn-download" onClick={handleDownloadImage}> Download Image</a>
         </Container>
     )

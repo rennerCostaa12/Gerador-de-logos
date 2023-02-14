@@ -166,7 +166,7 @@ const App = () => {
 
         listTeste.push(modelJsonGenerate);
       }
-      
+
       setListLogosGenerated(listTeste as any);
       handleShowLogo();
     } catch (error) {
