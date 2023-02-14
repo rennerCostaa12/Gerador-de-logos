@@ -10,10 +10,10 @@ interface CanvasProps {
     typeFontSlogan: string;
     linkFontName: string;
     nameFontLink: string;
-    colorIcon: string[];
+    colorSlogan: string;
 }
 
-const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorIcon, typeFont }: CanvasProps) => {
+const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorSlogan, typeFont }: CanvasProps) => {
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -55,7 +55,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
 
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
                 context.textAlign = 'center';
-                context.fillStyle = colorIcon[0];
+                context.fillStyle = colorSlogan;
                 context.font = `${fontStyle} ${size}px ${nameFontLink}`;
 
                 if (type === 'stroke') {

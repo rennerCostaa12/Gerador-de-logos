@@ -23,6 +23,7 @@ interface ListTypeFontsProps {
   link: string;
   name_font: string;
   type_text: 'fill' | 'stroke';
+  color_text: string;
 }
 
 interface IconsFindedProps {
@@ -141,15 +142,19 @@ const App = () => {
       const responseListDesign = await axios.get('http://localhost:3000/listTypeDesign');
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
       const responseListTypeText = await axios.get('http://localhost:3000/typesText');
+      const responseListColors = await axios.get('http://localhost:3000/listColors');
 
       for (let indice = 1; indice < 51; indice++) {
+
         const logoChoosed = handleChooseElement(iconsSelected);
+        const colorTextChoosed = handleChooseElement(responseListColors.data);
         const fontChoosed = handleChooseElement(responseListTypeFonts.data) as any;
         const designChoosed = handleChooseElement(responseListDesign.data);
         const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
         const typeText = handleChooseElement(responseListTypeText.data);
 
         fontChoosed['type_text'] = typeText;
+        fontChoosed['color_text'] = colorTextChoosed;
 
         const modelJsonGenerate = {
           id: indice,
@@ -161,6 +166,7 @@ const App = () => {
 
         listTeste.push(modelJsonGenerate);
       }
+      
       setListLogosGenerated(listTeste as any);
       handleShowLogo();
     } catch (error) {
@@ -301,11 +307,12 @@ const App = () => {
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
             {listFilteredTypeFont?.map((value, index) => {
+              console.log(value.text.color_text)
               return (
                 <React.Fragment key={index}>
                   <Canvas
                     typeFont={value.text && value.text.type_text}
-                    colorIcon={['#000000']}
+                    colorSlogan={value.text.color_text}
                     typeFontSlogan={value.fontSlogan}
                     nameLogo={nameLogo}
                     nameSlogan={nameSlogan}
