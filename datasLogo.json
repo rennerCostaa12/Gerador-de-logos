@@ -309,5 +309,6 @@
     ],
     "fontStyleSlogan": ["Neucha", "Niconne", "Niconne", "Lobster", "Oswald", "Itim"],
     "typesText": ["stroke", "fill"],
-    "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7"]
+    "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7"],
+    "backgroundStyleLogo": ["circle", "triangle", null]
 }

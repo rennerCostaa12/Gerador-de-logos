@@ -36,7 +36,8 @@ interface ListLogosGenerateProps {
   icon: IconsFindedProps;
   text: ListTypeFontsProps;
   fontSlogan: string;
-  model: 'type1' | 'type2' | 'type3' | 'type4',
+  model: 'type1' | 'type2' | 'type3' | 'type4';
+  backgroundModel: 'circle' | 'triangle' | null;
 }
 
 const App = () => {
@@ -143,6 +144,7 @@ const App = () => {
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
       const responseListTypeText = await axios.get('http://localhost:3000/typesText');
       const responseListColors = await axios.get('http://localhost:3000/listColors');
+      const responseBackgroundStyleLogo = await axios.get('http://localhost:3000/backgroundStyleLogo');
 
       for (let indice = 1; indice < 51; indice++) {
 
@@ -152,6 +154,7 @@ const App = () => {
         const designChoosed = handleChooseElement(responseListDesign.data);
         const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
         const typeText = handleChooseElement(responseListTypeText.data);
+        const backgroundLogoStyle = handleChooseElement(responseBackgroundStyleLogo.data);
 
         fontChoosed['type_text'] = typeText;
         fontChoosed['color_text'] = colorTextChoosed;
@@ -162,11 +165,12 @@ const App = () => {
           text: fontChoosed,
           fontSlogan: fontSloganChoosed,
           model: designChoosed,
+          backgroundModel: backgroundLogoStyle
         }
 
         listTeste.push(modelJsonGenerate);
       }
-      
+
       setListLogosGenerated(listTeste as any);
       handleShowLogo();
     } catch (error) {
@@ -297,7 +301,9 @@ const App = () => {
   }, []);
 
   const listFilteredTypeFont = listLogosGenerated?.filter((data) => listFonts.includes(data.text.name_font));
-  
+
+  console.log(listFilteredTypeFont);
+
   return(
     <div className="App">
       <div className="content-logos">
@@ -307,10 +313,10 @@ const App = () => {
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
             {listFilteredTypeFont?.map((value, index) => {
-              console.log(value.text.color_text)
               return (
                 <React.Fragment key={index}>
                   <Canvas
+                    backgroundModel={value.backgroundModel}
                     typeFont={value.text && value.text.type_text}
                     colorSlogan={value.text.color_text}
                     typeFontSlogan={value.fontSlogan}
