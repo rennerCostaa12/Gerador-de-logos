@@ -11,22 +11,6 @@ import {
   ContentListIconsSelected
 } from './styles';
 
-interface DatasLogoProps {
-  id: number;
-  icon: {
-    colors_icon: any;
-    model: '2d' | '3d';
-    url_icon: string;
-  };
-  model: 'type1' | 'type2' | 'type3' | 'type4';
-  text: {
-    type_font_slogan: string;
-    link_font_name: string;
-    name_link_font: string;
-    slogan_type_font: string;
-  };
-}
-
 interface ListIconsProps {
   colors_icon: string[];
   id: number;
@@ -74,7 +58,7 @@ function App() {
 
   const limitChoosedIcons = 5;
 
-  const handleChooseIcon = (dataIcon: IconsFindedProps) => {
+  const handleChooseIcon = (dataIcon: IconsFindedProps) => {    
     if (iconsSelected.length < 5) {
       setIconsSelected((currentItem: IconsFindedProps[]) => [...currentItem, dataIcon]);
     } else {
@@ -202,9 +186,13 @@ function App() {
           <ContentListIcons>
             {iconsFinded.slice(0, 26).map((value, index) => {
               return (
-                <div onClick={() => handleChooseIcon(value)} key={index}>
+                <button 
+                  disabled={iconsSelected.includes(value)} 
+                  style={{ border: iconsSelected.includes(value) ? '1px solid red' : '' }}
+                  onClick={() => handleChooseIcon(value)} key={index}
+                >
                   <img src={value.url_icon} alt={`icon-${value.id}`} />
-                </div>
+                </button>
               )
             })}
           </ContentListIcons>
@@ -214,9 +202,9 @@ function App() {
               <ContentListIconsSelected>
                 {iconsSelected.map((value: IconsFindedProps, index: number) => {
                   return (
-                    <div key={index} onClick={() => handleRemoveIconChoosed(value)}>
+                    <button title="remover ícone" key={index} onClick={() => handleRemoveIconChoosed(value)}>
                       {value && <img src={value.url_icon} alt={`icon-${value.id}`} />}
-                    </div>
+                    </button>
                   )
                 })}
               </ContentListIconsSelected>
@@ -295,8 +283,6 @@ function App() {
 
 
   const listFilteredTypeFont = listLogosGenerated?.filter((data) => listFonts.includes(data.text.name_font));
-
-  console.log(listFilteredTypeFont);
 
   return (
     <div className="App">

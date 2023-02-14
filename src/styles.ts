@@ -107,10 +107,11 @@ export const ContentListIcons = styled.div`
     flex-wrap: wrap;
     gap: 20px;
 
-    > div {
+    > button {
         img{
             width: 100px;
         }
+        background: none;
         border: 1px solid #000000;
         padding: 0.5rem;
         border-radius: 5px;
@@ -130,13 +131,14 @@ export const ContentListIconsSelected = styled.div`
     gap: 20px;
     margin: 2rem 0;
     
-    > div{
+    > button{
         img{
             width: 150px;
         }
+        background: none;
         border: 1px dashed #000;
         cursor: pointer;
-        padding: 0.5rem;
+        padding: 1rem;
         border-radius: 8px;
         
         &:hover{
