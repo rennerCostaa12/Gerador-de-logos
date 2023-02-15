@@ -7,8 +7,8 @@
         },
         {
             "id": 2,
-            "link": "https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Cfw.woff2",
-            "name_font": "Permanent Marker"
+            "link": "https://fonts.gstatic.com/s/kalam/v16/YA9dr0Wd4kDdMthROCc.woff2",
+            "name_font": "Kalam"
         },
         {
             "id": 3,
@@ -129,7 +129,7 @@
             "url_icon": "https://cdn-icons-png.flaticon.com/256/2125/2125190.png"
         }
     ],
-    "fontStyleSlogan": ["Neucha", "Permanent Marker", "Julee", "Lobster", "Oswald", "Itim"],
+    "fontStyleSlogan": ["Neucha", "Kalam", "Julee", "Lobster", "Oswald", "Itim"],
     "typesText": ["stroke", "fill"],
     "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7", "#000000"],
     "backgroundStyleLogo": ["circle", "triangle"],

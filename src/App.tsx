@@ -108,6 +108,17 @@ const App = () => {
       alert('Digite o nome de seu slogan!');
       return;
     }
+
+    if(nameLogo.length >= 18){
+      alert('O nome de sua logo é muito grande. Escolha outro nome mais curto!');
+      return;
+    }
+
+    if(nameSlogan.length >= 33){
+      alert('O nome do seu slogan é muito grande. Escolha outro por favor!');
+      return;
+    }
+
     setStep(currentStep => currentStep + 1);
   }
 
@@ -204,11 +215,13 @@ const App = () => {
         <>
           <ContentInputs>
             <input
+              defaultValue={nameLogo ? nameLogo : ''}
               type="text"
               placeholder="Nome da logo"
               onChange={(event) => setNameLogo(event.target.value)}
             />
             <input
+              defaultValue={nameSlogan ? nameSlogan : ''}
               type="text"
               placeholder="Slogan"
               onChange={(event) => setNameSlogan(event.target.value)}
@@ -303,11 +316,11 @@ const App = () => {
         <>
           <ContentSelectTypeFonts>
             <button
-              style={{ border: listFonts.includes('Permanent Marker') ? '1px solid blue' : '', fontFamily: 'Permanent Marker' }}
-              disabled={listFonts.length >= 3 && !listFonts.includes('Permanent Marker')}
-              onClick={() => handleSelectsTypFonts('Permanent Marker')}
+              style={{ border: listFonts.includes('Kalam') ? '1px solid blue' : '', fontFamily: 'Kalam' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Kalam')}
+              onClick={() => handleSelectsTypFonts('Kalam')}
             >
-              <h1>Permanent Marker</h1>
+              <h1>Kalam</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
@@ -370,7 +383,7 @@ const App = () => {
 
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
-            {listFilteredTypeFont?.map((value, index) => {
+            {listFilteredTypeFont?.slice(0, 21).map((value, index) => {
               console.log(value);
               return (
                 <React.Fragment key={index}>
