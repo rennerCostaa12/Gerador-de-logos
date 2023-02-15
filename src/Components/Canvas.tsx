@@ -4,7 +4,7 @@ import { Container } from "./styles";
 interface CanvasProps {
     urlImage: string;
     typeFont: 'fill' | 'stroke';
-    typeLogo: 'type1' | 'type2' | 'type3' | 'type4';
+    typeLogo: 'design1' | 'design2' | 'design3' | 'design4';
     nameLogo: string;
     nameSlogan: string | undefined;
     typeFontSlogan: string;
@@ -68,35 +68,35 @@ const Canvas = ({
             context.fill();
 
             
-            if(typeLogo === 'type1' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design1' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();    
                 context.arc(138, 79, 70, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type2' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design2' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.arc(138, 110, 80, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type3' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design3' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.arc(138, 130, 70, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type4' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design4' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.arc(200, 115, 70, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type1' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design1' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(140,20);
                 context.lineTo(20,155);
@@ -106,7 +106,7 @@ const Canvas = ({
                 context.fill();
             }
 
-            if(typeLogo === 'type2' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design2' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(140,20);
                 context.lineTo(20,155);
@@ -116,7 +116,7 @@ const Canvas = ({
                 context.fill();
             }
 
-            if(typeLogo === 'type3' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design3' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(140,20);
                 context.lineTo(20,165);
@@ -126,7 +126,7 @@ const Canvas = ({
                 context.fill();
             }
 
-            if(typeLogo === 'type4' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
+            if(typeLogo === 'design4' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(180,20);
                 context.moveTo(200,20);
@@ -162,7 +162,7 @@ const Canvas = ({
                 }
             }
 
-            if (typeLogo === 'type1') {
+            if (typeLogo === 'design1') {
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 50, 60, 60);;
@@ -173,7 +173,7 @@ const Canvas = ({
                 }
             }
 
-            if (typeLogo === 'type2') {
+            if (typeLogo === 'design2') {
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 80, 60, 60);
@@ -185,7 +185,7 @@ const Canvas = ({
             }
 
 
-            if (typeLogo === 'type3') {
+            if (typeLogo === 'design3') {
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 100, 60, 60);
@@ -196,7 +196,7 @@ const Canvas = ({
                 }
             }
 
-            if (typeLogo === 'type4') {
+            if (typeLogo === 'design4') {
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 1.5, 85, 60, 60);;

@@ -36,7 +36,7 @@ interface ListLogosGenerateProps {
   icon: IconsFindedProps;
   text: ListTypeFontsProps;
   fontSlogan: string;
-  model: 'type1' | 'type2' | 'type3' | 'type4';
+  model: 'design1' | 'design2' | 'design3' | 'design4';
   backgroundModel: 'circle' | 'triangle';
   colorBackgroundModel: string;
   backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
