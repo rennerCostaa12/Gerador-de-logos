@@ -1,3 +1,5 @@
+import FileSaver from "file-saver";
+
 import { useEffect, useRef } from "react";
 import { Container } from "./styles";
 import Menu from "../Menu";
@@ -40,6 +42,14 @@ const Canvas = ({
         const link = event.currentTarget;
         link.download = 'image.png';
         link.href = refCanvas.current?.toDataURL();
+
+        const contentBriefing = `Fonte da logo: ${nameFontLink}, Fonte do slogan: ${typeFontSlogan}, Url da logo: ${urlImage}, Cor da logo: ${colorLogoText}, Cor do slogan: #000000, Cor do fundo: #FFFFFFFF`;
+        const fileName = "briefingLogo.txt";
+        const blob = new Blob([contentBriefing], {
+            type: "text/plain;charset=utf-8"
+        });
+
+        FileSaver.saveAs(blob, fileName);
     }
 
     useEffect(() => {
