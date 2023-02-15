@@ -168,9 +168,9 @@ const Canvas = ({
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 50, 60, 60);;
-                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 140, colorLogoText, nameFontLink);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 12 ? 35 : 40, 140, 165, colorLogoText, nameFontLink);
                     if (nameSlogan) {
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 200);
                     }
                 }
             }
@@ -179,7 +179,7 @@ const Canvas = ({
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 80, 60, 60);
-                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70, colorLogoText, nameFontLink);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 12 ? 35 : 50, 140, 70, colorLogoText, nameFontLink);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
                     }
@@ -190,10 +190,10 @@ const Canvas = ({
             if (typeLogo === 'design3') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 2.35, 100, 60, 60);
-                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70, colorLogoText, nameFontLink);
+                    context.drawImage(image, image.width / 2.35, 130, 60, 60);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 12 ? 25 : 35, 140, 80, colorLogoText, nameFontLink);
                     if (nameSlogan) {
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 90);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 110);
                     }
                 }
             }
@@ -201,10 +201,10 @@ const Canvas = ({
             if (typeLogo === 'design4') {
                 image.src = urlImage;
                 image.onload = () => {
-                    context.drawImage(image, image.width / 1.5, 85, 60, 60);;
-                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 90, 120, colorLogoText, nameFontLink);
+                    context.drawImage(image, image.width / 1.25, 85, 60, 60);;
+                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 12 ? 28 : 38, 105, 110, colorLogoText, nameFontLink);
                     if (nameSlogan) {
-                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 16, 90, 140);
+                        drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 18 ? 13 : 16, 105, 140);
                     }
                 }
             }
@@ -221,7 +221,7 @@ const Canvas = ({
 
                 context.beginPath();
 
-                drawText(nameLogo, 'fill', 'normal', nameLogo.length >= 7 ? 40 : 50, 140, 170, colorLogoText, nameFontLink);
+                drawText(nameLogo, 'fill', 'normal', nameLogo.length >= 12 ? 35 : 45, 140, 170, colorLogoText, nameFontLink);
                 if (nameSlogan) {
                     drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 18, 140, 200);
                 }
@@ -257,9 +257,9 @@ const Canvas = ({
 
                 context.beginPath();
 
-                drawText(nameLogo, 'fill', 'normal',  nameLogo.length >= 7 ? 25 : 40, 165, 130, '#f1f1f1f1', nameFontLink);
+                drawText(nameLogo, 'fill', 'normal',  nameLogo.length >= 7 ? 20 : 40, 165, 130, '#f1f1f1f1', nameFontLink);
                 if (nameSlogan) {
-                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 20, 160, 190);
+                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 20 ? 15 : 20, 135, 190);
                 }
             }
             
@@ -282,9 +282,9 @@ const Canvas = ({
 
                 context.beginPath();
 
-                drawText(nameLogo, 'fill', 'normal', nameLogo.length >= 7 ? 40 : 50, 140, 170, colorLogoText, nameFontLink);
+                drawText(nameLogo, 'fill', 'normal', nameLogo.length >= 7 ? 30 : 50, 140, 185, colorLogoText, nameFontLink);
                 if (nameSlogan) {
-                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 18, 140, 200);
+                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 18, 140, 220);
                 }
             }
         })

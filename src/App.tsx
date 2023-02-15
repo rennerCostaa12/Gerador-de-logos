@@ -303,11 +303,11 @@ const App = () => {
         <>
           <ContentSelectTypeFonts>
             <button
-              style={{ border: listFonts.includes('Montserrat') ? '1px solid blue' : '', fontFamily: 'Montserrat' }}
-              disabled={listFonts.length >= 3 && !listFonts.includes('Montserrat')}
-              onClick={() => handleSelectsTypFonts('Montserrat')}
+              style={{ border: listFonts.includes('Permanent Marker') ? '1px solid blue' : '', fontFamily: 'Permanent Marker' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Permanent Marker')}
+              onClick={() => handleSelectsTypFonts('Permanent Marker')}
             >
-              <h1>Montserrat</h1>
+              <h1>Permanent Marker</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Neucha') ? '1px solid blue' : '', fontFamily: 'Neucha' }}
@@ -317,11 +317,11 @@ const App = () => {
               <h1>Neucha</h1>
             </button>
             <button
-              style={{ border: listFonts.includes('Niconne') ? '1px solid blue' : '', fontFamily: 'Niconne' }}
-              disabled={listFonts.length >= 3 && !listFonts.includes('Niconne')}
-              onClick={() => handleSelectsTypFonts('Niconne')}
+              style={{ border: listFonts.includes('Julee') ? '1px solid blue' : '', fontFamily: 'Julee' }}
+              disabled={listFonts.length >= 3 && !listFonts.includes('Julee')}
+              onClick={() => handleSelectsTypFonts('Julee')}
             >
-              <h1>Niconne</h1>
+              <h1>Julee</h1>
             </button>
             <button
               style={{ border: listFonts.includes('Lobster') ? '1px solid blue' : '', fontFamily: 'Lobster' }}
@@ -370,7 +370,8 @@ const App = () => {
 
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
-            {listFilteredTypeFont?.slice(0, 15).map((value, index) => {
+            {listFilteredTypeFont?.map((value, index) => {
+              console.log(value);
               return (
                 <React.Fragment key={index}>
                   <Canvas
