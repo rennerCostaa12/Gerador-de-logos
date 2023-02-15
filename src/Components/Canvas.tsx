@@ -4,7 +4,7 @@ import { Container } from "./styles";
 interface CanvasProps {
     urlImage: string;
     typeFont: 'fill' | 'stroke';
-    typeLogo: 'design1' | 'design2' | 'design3' | 'design4' | 'design5';
+    typeLogo: 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6';
     nameLogo: string;
     nameSlogan: string | undefined;
     typeFontSlogan: string;
@@ -223,6 +223,43 @@ const Canvas = ({
                 if (nameSlogan) {
                     drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 18, 140, 200);
                 }
+            }
+
+            if(typeLogo === 'design6'){
+                context.beginPath();
+
+                context.moveTo(70, 80);
+                context.lineTo(20, 80);
+                context.lineTo(20, 160);
+                context.lineTo(70, 160);
+                context.lineTo(70, 80);
+
+                context.strokeStyle = '#A6C4B1'
+                context.lineWidth = 3
+                context.stroke();
+
+                context.beginPath();
+
+                context.moveTo(250, 80);
+                context.lineTo(75, 80);
+                context.lineTo(75, 160);
+                context.lineTo(250, 160);
+                context.lineTo(250, 80);
+
+                context.fillStyle = '#A6C4B1'
+                context.fill();
+
+                context.beginPath();
+
+                drawText(nameLogo.substring(0, 1), 'fill', 'normal',  nameLogo.length >= 7 ? 45 : 40, 45, 135, '#000000', 'Bad Script');
+
+                context.beginPath();
+
+                drawText(nameLogo, 'fill', 'normal',  nameLogo.length >= 7 ? 25 : 40, 165, 130, '#f1f1f1f1', nameFontLink);
+                if (nameSlogan) {
+                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 20, 160, 190);
+                }
+        
             }
         })
             .catch((error) => {
