@@ -1,6 +1,9 @@
+import axios from "axios";
+
 import React, { useEffect, useState, useRef } from "react";
 import Canvas from "./Components/Canvas";
-import axios from "axios";
+import { GlobalStyle } from "./GlobalStyle";
+
 import {
   ContentLogos,
   ContentInputs,
@@ -377,8 +380,10 @@ const App = () => {
 
   return(
     <div className="App">
+      <GlobalStyle />
+      
       <div className="content-logos">
-
+        
         {stepRendered}
 
         {listFilteredTypeFont.length !== 0 &&

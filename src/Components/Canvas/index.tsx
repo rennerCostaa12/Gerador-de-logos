@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Container } from "./styles";
+import Menu from "../Menu";
 
 interface CanvasProps {
     urlImage: string;
@@ -295,14 +296,14 @@ const Canvas = ({
 
     return (
         <Container>
+            <Menu onClick={handleDownloadImage} />
+
             <canvas
                 width={280}
                 height={250}
                 style={{ border: '4px solid #000000' }}
                 ref={refCanvas}
             />
-
-            <a className="btn-download" onClick={handleDownloadImage}> Download Image</a>
         </Container>
     )
 }
