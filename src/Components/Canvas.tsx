@@ -4,7 +4,7 @@ import { Container } from "./styles";
 interface CanvasProps {
     urlImage: string;
     typeFont: 'fill' | 'stroke';
-    typeLogo: 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6';
+    typeLogo: 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6' | 'design7';
     nameLogo: string;
     nameSlogan: string | undefined;
     typeFontSlogan: string;
@@ -259,12 +259,36 @@ const Canvas = ({
                 if (nameSlogan) {
                     drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 20, 160, 190);
                 }
-        
+            }
+            
+            if (typeLogo === 'design7') {
+                context.beginPath();
+
+                context.moveTo(140, 10);
+                context.lineTo(85, 72);
+                context.lineTo(140, 135);
+                context.lineTo(190, 72);
+                context.lineTo(140, 10);
+                
+                context.strokeStyle = '#000000'
+                context.lineWidth = 3;
+                context.stroke();
+
+                context.beginPath();
+
+                drawText(nameLogo.substring(0, 1), 'fill', 'normal', 65, 135, 95, '#ED434A', 'Zeyada');
+
+                context.beginPath();
+
+                drawText(nameLogo, 'fill', 'normal', nameLogo.length >= 7 ? 40 : 50, 140, 170, colorLogoText, nameFontLink);
+                if (nameSlogan) {
+                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 18, 140, 200);
+                }
             }
         })
-            .catch((error) => {
-                console.log(error);
-            })
+        .catch((error) => {
+            console.log(error);
+        })
     }, []);
 
     return (
