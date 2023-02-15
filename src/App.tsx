@@ -46,7 +46,7 @@ const App = () => {
   const [iconsFinded, setIconsFinded] = useState<IconsFindedProps[]>([]);
   const [iconsSelected, setIconsSelected] = useState<any>([]);
   const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
-  const [isBackgroundStyle, setIsBackgroundStyle] = useState<boolean | null>(null);
+  const [isBackgroundStyle, setIsBackgroundStyle] = useState<'backgroundStyle' | 'backgroundStyleNone' | null>(null);
   
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
@@ -112,6 +112,15 @@ const App = () => {
   const handleNextStepSelectIcons = () => {
     if (iconsSelected.length < 5) {
       alert('Selecione os cincos itens');
+      return;
+    }
+
+    setStep(currentStep => currentStep + 1);
+  }
+
+  const handleNextStepTypeLogo = () => {
+    if(isBackgroundStyle === null){
+      alert('Escolha um tipo de logo');
       return;
     }
 
@@ -243,7 +252,47 @@ const App = () => {
           }
         </>
       )
-    } else if (step === 3) {
+    } else if(step === 3){
+      setStepRendered(
+        <>
+          <ContentSelectStyleBackground>
+            <h1>Estilos de Logo</h1>
+
+            <div>
+              <div className="content-cards">
+                <div 
+                  style={{ border: isBackgroundStyle === 'backgroundStyle' ? "2px solid blue" : "" }}
+                  onClick={() => setIsBackgroundStyle('backgroundStyle')}
+                >
+                  <div>
+                    <img src="img/backgroundstyle-circle.png" alt="background-style-circle" />
+                  </div>
+                  <div>
+                    <img src="img/backgroundstyle-triangle.png" alt="background-style-triangle" />
+                  </div>
+                </div>
+                
+                <div 
+                  style={{ border: isBackgroundStyle === 'backgroundStyleNone' ? "2px solid blue" : "" }}
+                  onClick={() => setIsBackgroundStyle('backgroundStyleNone')}
+                >
+                  <div>
+                    <img src="img/backgroundstyle-normal-1.png" alt="background-style-normal-1" />
+                  </div>
+                  <div>
+                    <img src="img/backgroundstyle-normal-2.png" alt="background-style-normal-2" />
+                  </div>
+                </div>
+              </div>
+              <ContentButtonGenerateLogo>
+                <button onClick={() => setStep(currentStep => currentStep - 1)}>Voltar</button>
+                <button onClick={handleNextStepTypeLogo}>Próximo</button>
+              </ContentButtonGenerateLogo>
+            </div>
+          </ContentSelectStyleBackground>
+        </>
+      )
+    } else if (step === 4) {
       setStepRendered(
         <>
           <ContentSelectTypeFonts>
@@ -299,7 +348,7 @@ const App = () => {
         </>
       )
     }
-  }, [step, listFonts, iconsSelected, nameLogo, nameSlogan]);
+  }, [step, listFonts, isBackgroundStyle, iconsSelected, nameLogo, nameSlogan]);
 
   useEffect(() => {
     handleIcons();
@@ -312,36 +361,6 @@ const App = () => {
       <div className="content-logos">
 
         {stepRendered}
-
-        <ContentSelectStyleBackground>
-          <h1>Estilos de Logo</h1>
-
-          <div className="content-cards">
-            <div 
-              style={{ border: isBackgroundStyle ? "2px solid blue" : "" }}
-              onClick={() => setIsBackgroundStyle(true)}
-            >
-              <div>
-                <img src="img/backgroundstyle-circle.png" alt="background-style-circle" />
-              </div>
-              <div>
-                <img src="img/backgroundstyle-triangle.png" alt="background-style-triangle" />
-              </div>
-            </div>
-            
-            <div 
-              style={{ border: !isBackgroundStyle ? "2px solid blue" : "" }}
-              onClick={() => setIsBackgroundStyle(false)}
-            >
-              <div>
-                <img src="img/backgroundstyle-normal-1.png" alt="background-style-normal-1" />
-              </div>
-              <div>
-                <img src="img/backgroundstyle-normal-2.png" alt="background-style-normal-2" />
-              </div>
-            </div>
-          </div>
-        </ContentSelectStyleBackground>
 
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>

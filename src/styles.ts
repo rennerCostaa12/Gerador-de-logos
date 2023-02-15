@@ -164,7 +164,6 @@ export const ContentSelectStyleBackground = styled.div`
         gap: 20px;
         align-items: center;
 
-
         > div {
             img{
                 width: 100%;
