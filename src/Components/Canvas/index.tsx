@@ -3,20 +3,18 @@ import FileSaver from "file-saver";
 import { useEffect, useRef } from "react";
 import { Container } from "./styles";
 import Menu from "../Menu";
+import { ModelsDesignProps, TypeFontSloganProps } from "../../App";
 
 interface CanvasProps {
     urlImage: string;
     typeFont: 'fill' | 'stroke';
-    typeLogo: 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6' | 'design7';
+    typeLogo: ModelsDesignProps;
     nameLogo: string;
     nameSlogan: string | undefined;
-    typeFontSlogan: string;
+    typeFontSlogan: TypeFontSloganProps;
     linkFontName: string;
     nameFontLink: string;
     colorLogoText: string;
-    backgroundModel: 'circle' | 'triangle';
-    colorBackgroundModel: string;
-    backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null;
     colorDesignLogo: string;
 }
 
@@ -29,10 +27,7 @@ const Canvas = ({
     linkFontName, 
     nameFontLink, 
     colorLogoText, 
-    typeFont, 
-    backgroundModel, 
-    colorBackgroundModel,
-    backgroundStyle,
+    typeFont,
     colorDesignLogo
 }: CanvasProps) => {
 
@@ -79,76 +74,6 @@ const Canvas = ({
             context.rect(0, 0, 280, 250);
             context.fillStyle = '#FFFFFF';
             context.fill();
-
-            
-            if(typeLogo === 'design1' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();    
-                context.arc(138, 79, 70, 0, 2 * Math.PI);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design2' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.arc(138, 110, 80, 0, 2 * Math.PI);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design3' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.arc(138, 130, 70, 0, 2 * Math.PI);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design4' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.arc(200, 115, 70, 0, 2 * Math.PI);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design1' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.moveTo(140,20);
-                context.lineTo(20,155);
-                context.lineTo(260,155);
-                context.lineTo(140,20);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design2' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.moveTo(140,20);
-                context.lineTo(20,155);
-                context.lineTo(260,155);
-                context.lineTo(140,20);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design3' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.moveTo(140,20);
-                context.lineTo(20,165);
-                context.lineTo(260,165);
-                context.lineTo(140,20);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
-
-            if(typeLogo === 'design4' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
-                context.beginPath();
-                context.moveTo(180,20);
-                context.moveTo(200,20);
-                context.lineTo(120,160);
-                context.lineTo(275,160);
-                context.lineTo(200,20);
-                context.fillStyle = colorBackgroundModel;
-                context.fill();
-            }
 
             const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number, colorText: string, nameFont: string) => {
                 context.textAlign = 'center';

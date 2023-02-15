@@ -10,8 +10,7 @@ import {
   ContentButtonGenerateLogo,
   ContentSelectTypeFonts,
   ContentListIcons,
-  ContentListIconsSelected,
-  ContentSelectStyleBackground
+  ContentListIconsSelected
 } from './styles';
 
 interface ListIconsProps {
@@ -21,11 +20,13 @@ interface ListIconsProps {
   url_icon: string;
 }
 
+export type TypeTextLogoProps = 'stroke' | 'fill';
+
 interface ListTypeFontsProps {
   id: number;
   link: string;
   name_font: string;
-  type_text: 'fill' | 'stroke';
+  type_text: TypeTextLogoProps;
   color_text: string;
 }
 
@@ -34,15 +35,15 @@ interface IconsFindedProps {
   url_icon: string;
 }
 
+export type ModelsDesignProps = 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6' | 'design7';
+export type TypeFontSloganProps = 'Neucha' | 'Kalam' | 'Julee' | 'Lobster' | 'Oswald' | 'Itim';
+
 interface ListLogosGenerateProps {
   id: number;
   icon: IconsFindedProps;
   text: ListTypeFontsProps;
-  fontSlogan: string;
-  model: 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6' | 'design7';
-  backgroundModel: 'circle' | 'triangle';
-  colorBackgroundModel: string;
-  backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null;
+  fontSlogan: TypeFontSloganProps;
+  model: ModelsDesignProps;
   colorDesignLogo: string;
 }
 
@@ -51,7 +52,6 @@ const App = () => {
   const [iconsFinded, setIconsFinded] = useState<IconsFindedProps[]>([]);
   const [iconsSelected, setIconsSelected] = useState<any>([]);
   const [listLogosGenerated, setListLogosGenerated] = useState<ListLogosGenerateProps[]>([]);
-  const [isBackgroundStyle, setIsBackgroundStyle] = useState<'backgroundStyle' | 'backgroundStyleNone' | null>(null);
   
   const [nameLogo, setNameLogo] = useState<string>('');
   const [nameSlogan, setNameSlogan] = useState<string>('');
@@ -134,15 +134,6 @@ const App = () => {
     setStep(currentStep => currentStep + 1);
   }
 
-  const handleNextStepTypeLogo = () => {
-    if(isBackgroundStyle === null){
-      alert('Escolha um tipo de logo');
-      return;
-    }
-
-    setStep(currentStep => currentStep + 1);
-  }
-
   const handleShowLogo = () => {
     const valueNameLogo = refNameLogo.current?.value;
     const valueNameSlogan = refNameSlogan.current?.value;
@@ -163,7 +154,7 @@ const App = () => {
   }
 
   const handleGenerateLogo = async () => {
-    let listTeste = [];
+    let listGenerated = [];
     const listColors = ['#0F77A3', '#000000', '#DC143C', '#A6C4B1'];
 
     try {
@@ -172,22 +163,18 @@ const App = () => {
       const responseListFontSlogan = await axios.get('http://localhost:3000/fontStyleSlogan');
       const responseListTypeText = await axios.get('http://localhost:3000/typesText');
       const responseListColors = await axios.get('http://localhost:3000/listColors');
-      const responseListBackgroundStyleLogo = await axios.get('http://localhost:3000/backgroundStyleLogo');
-      const responseListBackgroundStyleColor = await axios.get('http://localhost:3000/backgroundStyleColor');
 
       for (let indice = 1; indice < 51; indice++) {
 
-        const logoChoosed = handleChooseElement(iconsSelected);
-        const colorTextChoosed = handleChooseElement(responseListColors.data);
+        const logoChoosed = handleChooseElement(iconsSelected) as IconsFindedProps;
+        const colorTextChoosed = handleChooseElement(responseListColors.data) as string;
         const fontChoosed = handleChooseElement(responseListTypeFonts.data) as any;
-        const designChoosed = handleChooseElement(responseListDesign.data);
-        const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data);
-        const typeText = handleChooseElement(responseListTypeText.data);
-        const backgroundLogoStyle = handleChooseElement(responseListBackgroundStyleLogo.data);
-        const backgroundLogoColor = handleChooseElement(responseListBackgroundStyleColor.data);
-        const logoColorChoosed = handleChooseElement(listColors);
+        const designChoosed = handleChooseElement(responseListDesign.data) as ModelsDesignProps;
+        const fontSloganChoosed = handleChooseElement(responseListFontSlogan.data) as TypeFontSloganProps;
+        const typeTextLogo = handleChooseElement(responseListTypeText.data) as TypeTextLogoProps;
+        const logoColorChoosed = handleChooseElement(listColors) as string;
 
-        fontChoosed['type_text'] = typeText;
+        fontChoosed['type_text'] = typeTextLogo;
         fontChoosed['color_text'] = colorTextChoosed;
 
         const modelJsonGenerate = {
@@ -196,16 +183,13 @@ const App = () => {
           text: fontChoosed,
           fontSlogan: fontSloganChoosed,
           model: designChoosed,
-          backgroundModel: backgroundLogoStyle,
-          colorBackgroundModel: backgroundLogoColor,
-          backgroundStyle: isBackgroundStyle,
           colorDesignLogo: logoColorChoosed
         }
 
-        listTeste.push(modelJsonGenerate);
+        listGenerated.push(modelJsonGenerate);
       }
 
-      setListLogosGenerated(listTeste as any);
+      setListLogosGenerated(listGenerated);
       handleShowLogo();
     } catch (error) {
       console.log(error);
@@ -274,47 +258,7 @@ const App = () => {
           }
         </>
       )
-    } else if(step === 3){
-      setStepRendered(
-        <>
-          <ContentSelectStyleBackground>
-            <h1>Estilos de Logo</h1>
-
-            <div>
-              <div className="content-cards">
-                <div 
-                  style={{ border: isBackgroundStyle === 'backgroundStyle' ? "2px solid blue" : "" }}
-                  onClick={() => setIsBackgroundStyle('backgroundStyle')}
-                >
-                  <div>
-                    <img src="img/backgroundstyle-circle.png" alt="background-style-circle" />
-                  </div>
-                  <div>
-                    <img src="img/backgroundstyle-triangle.png" alt="background-style-triangle" />
-                  </div>
-                </div>
-                
-                <div 
-                  style={{ border: isBackgroundStyle === 'backgroundStyleNone' ? "2px solid blue" : "" }}
-                  onClick={() => setIsBackgroundStyle('backgroundStyleNone')}
-                >
-                  <div>
-                    <img src="img/backgroundstyle-normal-1.png" alt="background-style-normal-1" />
-                  </div>
-                  <div>
-                    <img src="img/backgroundstyle-normal-2.png" alt="background-style-normal-2" />
-                  </div>
-                </div>
-              </div>
-              <ContentButtonGenerateLogo>
-                <button onClick={() => setStep(currentStep => currentStep - 1)}>Voltar</button>
-                <button onClick={handleNextStepTypeLogo}>Próximo</button>
-              </ContentButtonGenerateLogo>
-            </div>
-          </ContentSelectStyleBackground>
-        </>
-      )
-    } else if (step === 4) {
+    } else if (step === 3) {
       setStepRendered(
         <>
           <ContentSelectTypeFonts>
@@ -370,7 +314,7 @@ const App = () => {
         </>
       )
     }
-  }, [step, listFonts, isBackgroundStyle, iconsSelected, nameLogo, nameSlogan]);
+  }, [step, listFonts, iconsSelected, nameLogo, nameSlogan]);
 
   useEffect(() => {
     handleIcons();
@@ -389,14 +333,10 @@ const App = () => {
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
             {listFilteredTypeFont?.slice(0, 21).map((value, index) => {
-              console.log(value);
               return (
                 <React.Fragment key={index}>
                   <Canvas
                     colorDesignLogo={value.colorDesignLogo}
-                    backgroundStyle={value.backgroundStyle}
-                    backgroundModel={value.backgroundModel}
-                    colorBackgroundModel={value.colorBackgroundModel}
                     typeFont={value.text && value.text.type_text}
                     colorLogoText={value.text.color_text}
                     typeFontSlogan={value.fontSlogan}

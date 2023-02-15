@@ -148,37 +148,3 @@ export const ContentListIconsSelected = styled.div`
         }
     }
 `
-
-export const ContentSelectStyleBackground = styled.div`
-    > h1{
-        font-size: 40px;
-        text-align: center;
-        margin: 1.5rem 0;
-    }
-
-    .content-cards{
-        margin-bottom: 1.5rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        align-items: center;
-
-
-        > div {
-            
-            img{
-                width: 100%;
-                height: 150px;
-            }
-
-            border: 2px solid #000000;
-            cursor: pointer;
-
-            &:hover{
-                transition: all ease 0.3s;
-                border: 2px solid red;
-            }
-        }
-    }
-`

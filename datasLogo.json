@@ -131,7 +131,5 @@
     ],
     "fontStyleSlogan": ["Neucha", "Kalam", "Julee", "Lobster", "Oswald", "Itim"],
     "typesText": ["stroke", "fill"],
-    "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7", "#000000"],
-    "backgroundStyleLogo": ["circle", "triangle"],
-    "backgroundStyleColor": ["#C1A8C0", "#E99591", "#F2D3AF", "#CE4346", "#C96355"]
+    "listColors": ["#A13941FF", "#31AFB4", "#8D1036", "#1498D5", "#F47C50", "#6D93B7", "#000000"]
 }
