@@ -4,13 +4,13 @@ import { Container } from "./styles";
 interface CanvasProps {
     urlImage: string;
     typeFont: 'fill' | 'stroke';
-    typeLogo: 'design1' | 'design2' | 'design3' | 'design4';
+    typeLogo: 'design1' | 'design2' | 'design3' | 'design4' | 'design5';
     nameLogo: string;
     nameSlogan: string | undefined;
     typeFontSlogan: string;
     linkFontName: string;
     nameFontLink: string;
-    colorSlogan: string;
+    colorLogoText: string;
     backgroundModel: 'circle' | 'triangle';
     colorBackgroundModel: string;
     backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
@@ -24,7 +24,7 @@ const Canvas = ({
     typeFontSlogan, 
     linkFontName, 
     nameFontLink, 
-    colorSlogan, 
+    colorLogoText, 
     typeFont, 
     backgroundModel, 
     colorBackgroundModel,
@@ -137,15 +137,15 @@ const Canvas = ({
                 context.fill();
             }
 
-            const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number) => {
+            const drawText = (name: string, type: 'stroke' | 'fill', fontStyle: 'normal' | 'oblique' | 'italic', size: number, coordinatesX: number, coordinatesY: number, colorText: string, nameFont: string) => {
                 context.textAlign = 'center';
-                context.font = `${fontStyle} ${size}px ${nameFontLink}`;
+                context.font = `${fontStyle} ${size}px ${nameFont}`;
                 
                 if (type === 'stroke') {
-                    context.strokeStyle = colorSlogan;
+                    context.strokeStyle = colorText;
                     context.strokeText(name, coordinatesX, coordinatesY);
                 } else {
-                    context.fillStyle = colorSlogan;
+                    context.fillStyle = colorText;
                     context.fillText(name, coordinatesX, coordinatesY);
                 }
             }
@@ -166,7 +166,7 @@ const Canvas = ({
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 50, 60, 60);;
-                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 140);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 140, colorLogoText, nameFontLink);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
                     }
@@ -177,7 +177,7 @@ const Canvas = ({
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 80, 60, 60);
-                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70, colorLogoText, nameFontLink);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 170);
                     }
@@ -189,7 +189,7 @@ const Canvas = ({
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 2.35, 100, 60, 60);
-                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70);
+                    drawText(nameLogo, typeFont, 'normal', nameLogo.length >= 7 ? 30 : 40, 140, 70, colorLogoText, nameFontLink);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 16, 140, 90);
                     }
@@ -200,10 +200,28 @@ const Canvas = ({
                 image.src = urlImage;
                 image.onload = () => {
                     context.drawImage(image, image.width / 1.5, 85, 60, 60);;
-                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 90, 120);
+                    drawText(nameLogo, typeFont, 'normal',  nameLogo.length >= 7 ? 25 : 40, 90, 120, colorLogoText, nameFontLink);
                     if (nameSlogan) {
                         drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, nameSlogan.length >= 15 ? 11 : 16, 90, 140);
                     }
+                }
+            }
+
+            if (typeLogo === 'design5') {
+                context.beginPath();
+                context.arc(140, 80, 50, 0, 2 * Math.PI);
+                context.fillStyle = '#000000';
+                context.fill();
+
+                context.beginPath();
+
+                drawText(nameLogo.substring(0, 1), 'fill', 'normal', 50, 135, 95, '#f1f1f1f1', 'Caveat');
+
+                context.beginPath();
+
+                drawText(nameLogo, 'fill', 'normal', nameLogo.length >= 7 ? 40 : 50, 140, 170, colorLogoText, nameFontLink);
+                if (nameSlogan) {
+                    drawTextSlogan(nameSlogan, 'fill', 'normal', typeFontSlogan, 18, 140, 200);
                 }
             }
         })

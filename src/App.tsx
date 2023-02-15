@@ -36,7 +36,7 @@ interface ListLogosGenerateProps {
   icon: IconsFindedProps;
   text: ListTypeFontsProps;
   fontSlogan: string;
-  model: 'design1' | 'design2' | 'design3' | 'design4';
+  model: 'design1' | 'design2' | 'design3' | 'design4' | 'design5';
   backgroundModel: 'circle' | 'triangle';
   colorBackgroundModel: string;
   backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
@@ -374,7 +374,7 @@ const App = () => {
                     backgroundModel={value.backgroundModel}
                     colorBackgroundModel={value.colorBackgroundModel}
                     typeFont={value.text && value.text.type_text}
-                    colorSlogan={value.text.color_text}
+                    colorLogoText={value.text.color_text}
                     typeFontSlogan={value.fontSlogan}
                     nameLogo={nameLogo}
                     nameSlogan={nameSlogan}

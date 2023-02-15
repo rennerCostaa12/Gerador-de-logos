@@ -30,7 +30,7 @@
             "name_font": "Itim"
         }
     ],
-    "listTypeDesign": ["design1", "design2", "design3", "design4"],
+    "listTypeDesign": ["design1", "design2", "design3", "design4", "design5"],
     "listFlatIcons": [
         {
             "id": 1,
