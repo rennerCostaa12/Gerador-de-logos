@@ -37,8 +37,9 @@ interface ListLogosGenerateProps {
   text: ListTypeFontsProps;
   fontSlogan: string;
   model: 'type1' | 'type2' | 'type3' | 'type4';
-  backgroundModel: 'circle' | 'triangle' | null;
+  backgroundModel: 'circle' | 'triangle';
   colorBackgroundModel: string;
+  backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
 }
 
 const App = () => {
@@ -179,7 +180,8 @@ const App = () => {
           fontSlogan: fontSloganChoosed,
           model: designChoosed,
           backgroundModel: backgroundLogoStyle,
-          colorBackgroundModel: backgroundLogoColor
+          colorBackgroundModel: backgroundLogoColor,
+          backgroundStyle: isBackgroundStyle
         }
 
         listTeste.push(modelJsonGenerate);
@@ -368,6 +370,7 @@ const App = () => {
               return (
                 <React.Fragment key={index}>
                   <Canvas
+                    backgroundStyle={value.backgroundStyle}
                     backgroundModel={value.backgroundModel}
                     colorBackgroundModel={value.colorBackgroundModel}
                     typeFont={value.text && value.text.type_text}

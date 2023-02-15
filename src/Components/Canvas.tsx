@@ -11,13 +11,25 @@ interface CanvasProps {
     linkFontName: string;
     nameFontLink: string;
     colorSlogan: string;
-    backgroundModel: 'circle' | 'triangle' | null;
+    backgroundModel: 'circle' | 'triangle';
     colorBackgroundModel: string;
+    backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
 }
 
-const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, linkFontName, nameFontLink, colorSlogan, typeFont, backgroundModel, colorBackgroundModel }: CanvasProps) => {
-
-    console.log(urlImage);
+const Canvas = ({ 
+    urlImage, 
+    typeLogo, 
+    nameLogo, 
+    nameSlogan, 
+    typeFontSlogan, 
+    linkFontName, 
+    nameFontLink, 
+    colorSlogan, 
+    typeFont, 
+    backgroundModel, 
+    colorBackgroundModel,
+    backgroundStyle
+}: CanvasProps) => {
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -56,35 +68,35 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
             context.fill();
 
             
-            if(typeLogo === 'type1' && backgroundModel === 'circle'){
+            if(typeLogo === 'type1' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();    
                 context.arc(138, 79, 70, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type2' && backgroundModel === 'circle'){
+            if(typeLogo === 'type2' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.arc(138, 110, 80, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type3' && backgroundModel === 'circle'){
+            if(typeLogo === 'type3' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.arc(138, 130, 70, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type4' && backgroundModel === 'circle'){
+            if(typeLogo === 'type4' && backgroundModel === 'circle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.arc(200, 115, 70, 0, 2 * Math.PI);
                 context.fillStyle = colorBackgroundModel;
                 context.fill();
             }
 
-            if(typeLogo === 'type1' && backgroundModel === 'triangle'){
+            if(typeLogo === 'type1' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(140,20);
                 context.lineTo(20,155);
@@ -94,7 +106,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.fill();
             }
 
-            if(typeLogo === 'type2' && backgroundModel === 'triangle'){
+            if(typeLogo === 'type2' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(140,20);
                 context.lineTo(20,155);
@@ -104,7 +116,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.fill();
             }
 
-            if(typeLogo === 'type3' && backgroundModel === 'triangle'){
+            if(typeLogo === 'type3' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(140,20);
                 context.lineTo(20,165);
@@ -114,7 +126,7 @@ const Canvas = ({ urlImage, typeLogo, nameLogo, nameSlogan, typeFontSlogan, link
                 context.fill();
             }
 
-            if(typeLogo === 'type4' && backgroundModel === 'triangle'){
+            if(typeLogo === 'type4' && backgroundModel === 'triangle' && backgroundStyle === 'backgroundStyle'){
                 context.beginPath();
                 context.moveTo(180,20);
                 context.moveTo(200,20);
