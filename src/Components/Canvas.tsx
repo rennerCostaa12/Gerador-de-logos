@@ -13,7 +13,8 @@ interface CanvasProps {
     colorLogoText: string;
     backgroundModel: 'circle' | 'triangle';
     colorBackgroundModel: string;
-    backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
+    backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null;
+    colorDesignLogo: string;
 }
 
 const Canvas = ({ 
@@ -28,7 +29,8 @@ const Canvas = ({
     typeFont, 
     backgroundModel, 
     colorBackgroundModel,
-    backgroundStyle
+    backgroundStyle,
+    colorDesignLogo
 }: CanvasProps) => {
 
     const refCanvas = useRef<HTMLCanvasElement | null>(null);
@@ -210,7 +212,7 @@ const Canvas = ({
             if (typeLogo === 'design5') {
                 context.beginPath();
                 context.arc(140, 80, 50, 0, 2 * Math.PI);
-                context.fillStyle = '#000000';
+                context.fillStyle = colorDesignLogo;
                 context.fill();
 
                 context.beginPath();
@@ -234,7 +236,7 @@ const Canvas = ({
                 context.lineTo(70, 160);
                 context.lineTo(70, 80);
 
-                context.strokeStyle = '#A6C4B1'
+                context.strokeStyle = colorDesignLogo
                 context.lineWidth = 3
                 context.stroke();
 
@@ -246,12 +248,12 @@ const Canvas = ({
                 context.lineTo(250, 160);
                 context.lineTo(250, 80);
 
-                context.fillStyle = '#A6C4B1'
+                context.fillStyle = colorDesignLogo
                 context.fill();
 
                 context.beginPath();
 
-                drawText(nameLogo.substring(0, 1), 'fill', 'normal',  nameLogo.length >= 7 ? 45 : 40, 45, 135, '#000000', 'Bad Script');
+                drawText(nameLogo.substring(0, 1), 'fill', 'normal',  nameLogo.length >= 7 ? 45 : 40, 45, 140, colorDesignLogo, 'Bad Script');
 
                 context.beginPath();
 
@@ -276,7 +278,7 @@ const Canvas = ({
 
                 context.beginPath();
 
-                drawText(nameLogo.substring(0, 1), 'fill', 'normal', 65, 135, 95, '#ED434A', 'Zeyada');
+                drawText(nameLogo.substring(0, 1), 'fill', 'normal', 65, 135, 95, colorDesignLogo, 'Zeyada');
 
                 context.beginPath();
 

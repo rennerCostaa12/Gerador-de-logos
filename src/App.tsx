@@ -39,7 +39,8 @@ interface ListLogosGenerateProps {
   model: 'design1' | 'design2' | 'design3' | 'design4' | 'design5' | 'design6' | 'design7';
   backgroundModel: 'circle' | 'triangle';
   colorBackgroundModel: string;
-  backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null
+  backgroundStyle: 'backgroundStyle' | 'backgroundStyleNone' | null;
+  colorDesignLogo: string;
 }
 
 const App = () => {
@@ -142,13 +143,14 @@ const App = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  const handleChooseElement = (list: ListIconsProps[]) => {
+  const handleChooseElement = (list: ListIconsProps[] | string[]) => {
     const randomIndex = handleRandomIndex(0, list.length - 1);
     return list[randomIndex];
   }
 
   const handleGenerateLogo = async () => {
     let listTeste = [];
+    const listColors = ['#0F77A3', '#000000', '#DC143C', '#A6C4B1'];
 
     try {
       const responseListTypeFonts = await axios.get('http://localhost:3000/fontStyles');
@@ -169,6 +171,7 @@ const App = () => {
         const typeText = handleChooseElement(responseListTypeText.data);
         const backgroundLogoStyle = handleChooseElement(responseListBackgroundStyleLogo.data);
         const backgroundLogoColor = handleChooseElement(responseListBackgroundStyleColor.data);
+        const logoColorChoosed = handleChooseElement(listColors);
 
         fontChoosed['type_text'] = typeText;
         fontChoosed['color_text'] = colorTextChoosed;
@@ -181,7 +184,8 @@ const App = () => {
           model: designChoosed,
           backgroundModel: backgroundLogoStyle,
           colorBackgroundModel: backgroundLogoColor,
-          backgroundStyle: isBackgroundStyle
+          backgroundStyle: isBackgroundStyle,
+          colorDesignLogo: logoColorChoosed
         }
 
         listTeste.push(modelJsonGenerate);
@@ -366,10 +370,11 @@ const App = () => {
 
         {listFilteredTypeFont.length !== 0 &&
           <ContentLogos>
-            {listFilteredTypeFont?.map((value, index) => {
+            {listFilteredTypeFont?.slice(0, 15).map((value, index) => {
               return (
                 <React.Fragment key={index}>
                   <Canvas
+                    colorDesignLogo={value.colorDesignLogo}
                     backgroundStyle={value.backgroundStyle}
                     backgroundModel={value.backgroundModel}
                     colorBackgroundModel={value.colorBackgroundModel}
